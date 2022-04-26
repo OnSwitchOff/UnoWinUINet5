@@ -35,16 +35,30 @@
             </Border>
         </Popup>
 
-        <Button Grid.Column="0" Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked2"/>
-        <Popup Grid.Column="0"  x:Name="StandardPopup2" >
-            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+        <Grid x:Name="cbbx2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="lbl2" VerticalAlignment="Center" Padding="10,0" Foreground="White"/>
+            <Button Grid.Column="1"  Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked2"/>
+            <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup2" >
+                <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                BorderThickness="2" Width="200" Height="200">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
-                    <Button Content="Close" Click="ClosePopupClicked2" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Border>
-        </Popup>
+                BorderThickness="2"  x:Name="brdr2">
+                    <ScrollViewer  MaxHeight="200"  Width="{Binding ElementName=cbbx2,Path=ActualWidth,Mode=TwoWay}">
+                        <ListBox x:Name="lb">
+                            <TextBlock Text="Arial" FontFamily="Arial"/>
+                            <TextBlock Text="Courier New" FontFamily="Courier New"/>
+                            <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
+                            <TextBlock Text="Arial" FontFamily="Arial"/>
+                            <TextBlock Text="Courier New" FontFamily="Courier New"/>
+                            <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
+                        </ListBox>
+                    </ScrollViewer>
+                </Border>
+            </Popup>
+        </Grid>
+        
     </Grid>
 </Page>

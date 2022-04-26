@@ -69,6 +69,7 @@ namespace UnoWinUINet5
             StandardPopup.Tapped += StandardPopup_Tapped;
 
             brdr1.PointerExited += Brdr1_PointerExited;
+           
         }
 
         private void Brdr1_PointerExited(object sender, PointerRoutedEventArgs e)
@@ -133,8 +134,31 @@ namespace UnoWinUINet5
         {
             // open the Popup if it isn't open already 
             if (!StandardPopup2.IsOpen) { StandardPopup2.IsOpen = true; }
-
             StandardPopup2.LostFocus += StandardPopup_LostFocus2;
+            brdr2.PointerExited += Brdr2_PointerExited;
+            lb.SelectionChanged += Lb_SelectionChanged;
+
+        }
+
+        private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lbl2.Text = (lb.SelectedValue as TextBlock).Text;
+            lb.SelectionChanged -= Lb_SelectionChanged;
+            brdr2.PointerExited -= Brdr2_PointerExited;
+            if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
+        }
+
+        private void Brdr2_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            lb.SelectionChanged -= Lb_SelectionChanged;
+            brdr2.PointerExited -= Brdr2_PointerExited;
+            if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
+        }
+
+        private void Brdr1_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            brdr2.RightTapped -= Brdr1_RightTapped;
+            if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
         }
 
         private void StandardPopup_LostFocus2(object sender, RoutedEventArgs e)
