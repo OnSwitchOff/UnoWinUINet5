@@ -47,18 +47,27 @@
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
                 BorderThickness="2"  x:Name="brdr2">
                     <ScrollViewer  MaxHeight="200"  Width="{Binding ElementName=cbbx2,Path=ActualWidth,Mode=TwoWay}">
-                        <ListBox x:Name="lb">
+                        <ListView x:Name="lb">
                             <TextBlock Text="Arial" FontFamily="Arial"/>
                             <TextBlock Text="Courier New" FontFamily="Courier New"/>
                             <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
                             <TextBlock Text="Arial" FontFamily="Arial"/>
                             <TextBlock Text="Courier New" FontFamily="Courier New"/>
                             <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
-                        </ListBox>
+                        </ListView>
                     </ScrollViewer>
                 </Border>
             </Popup>
         </Grid>
-        
+
+
+        <Grid x:Name="cbbx3" Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="lbl3" VerticalAlignment="Center" Padding="10,0" Foreground="White"/>
+            <Button Grid.Column="1"  Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked3"/>
+        </Grid>
     </Grid>
 </Page>

@@ -13,6 +13,8 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
+using System.Xml;
+using Microsoft.UI.Xaml.Markup;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -166,6 +168,63 @@ namespace UnoWinUINet5
 
             StandardPopup2.LostFocus -= StandardPopup_LostFocus2;
             if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
+        }
+
+
+        Popup popup;
+        ListView listView;
+        private void ShowPopupOffsetClicked3(object sender, RoutedEventArgs e)
+        {
+            // open the Popup if it isn't open already 
+
+            popup = new Popup();
+     
+
+            ScrollViewer scrollViewer = new ScrollViewer();
+            scrollViewer.MaxHeight = 200;
+            scrollViewer.Width = cbbx3.ActualWidth;
+
+            listView = new ListView();
+            //StringReader stringReader = new StringReader("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Text=\"Text\"/></DataTemplate>");
+            //XmlReader xmlReader = XmlReader.Create(stringReader);
+
+            //DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Text=\"Text\"/></DataTemplate>") as DataTemplate;
+
+            //listView.ItemTemplate = dataTemplate;
+
+            string[] source = new string[] { "item1", "item2", "item3", "item2", "item3", "item2", "item3" };
+            listView.ItemsSource = source;
+
+            if (!StandardPopup2.IsOpen) { StandardPopup2.IsOpen = true; }
+            StandardPopup2.LostFocus += StandardPopup_LostFocus2;
+            brdr2.PointerExited += Brdr2_PointerExited;
+            lb.SelectionChanged += Lb_SelectionChanged;
+
+            scrollViewer.Content = listView;
+            cbbx3.Children.Add(popup);
+            Grid.SetColumnSpan(popup, 2);
+            popup.Child = scrollViewer;
+       
+
+            scrollViewer.PointerExited += ScrollViewer_PointerExited;
+            listView.SelectionChanged += ListView_SelectionChanged;
+            popup.IsOpen = true;
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            popup.IsOpen = false;
+            listView.SelectionChanged -= ListView_SelectionChanged;
+
+            lbl3.Text = listView.SelectedValue.ToString();
+            cbbx3.Children.Remove(popup);
+        }
+
+        private void ScrollViewer_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            popup.IsOpen = false;
+            listView.SelectionChanged -= ListView_SelectionChanged;
+            cbbx3.Children.Remove(popup);
         }
     }
 }
