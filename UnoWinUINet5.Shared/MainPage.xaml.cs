@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,9 +23,13 @@ namespace UnoWinUINet5
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        ObservableCollection<FontFamily> fonts = new ObservableCollection<FontFamily>();
         public MainPage()
         {
             this.InitializeComponent();
+            fonts.Add(new FontFamily("Arial"));
+            fonts.Add(new FontFamily("Courier New"));
+            fonts.Add(new FontFamily("Times New Roman"));
         }
     }
 }

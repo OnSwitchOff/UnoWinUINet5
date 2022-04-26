@@ -9,6 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-      <TextBlock Text="Hello, world!" Margin="20" FontSize="30" />
+        <ComboBox x:Name="FontsCombo" Header="Fonts" Height="150" Width="296" 
+          ItemsSource="{x:Bind fonts}" DisplayMemberPath="Source"/>
     </Grid>
 </Page>
