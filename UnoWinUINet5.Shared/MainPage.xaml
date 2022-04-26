@@ -8,8 +8,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="gridgrid" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <ComboBox x:Name="FontsCombo" Header="Fonts" Height="150" Width="296" 
           ItemsSource="{x:Bind fonts}" DisplayMemberPath="Source"/>
+        <TextBox x:Name="tb" Grid.Column="1"/>
     </Grid>
 </Page>

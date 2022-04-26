@@ -30,6 +30,12 @@ namespace UnoWinUINet5
             fonts.Add(new FontFamily("Arial"));
             fonts.Add(new FontFamily("Courier New"));
             fonts.Add(new FontFamily("Times New Roman"));
+            gridgrid.PointerPressed += Gridgrid_PointerPressed;
+        }
+
+        private void Gridgrid_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            tb.Focus(FocusState.Programmatic);
         }
     }
 }
