@@ -31,6 +31,7 @@ namespace UnoWinUINet5
         public MainPage()
         {
             this.InitializeComponent();
+            this.Foreground = new SolidColorBrush(Colors.Black);
             fonts.Add(new FontFamily("Arial"));
             fonts.Add(new FontFamily("Courier New"));
             fonts.Add(new FontFamily("Times New Roman"));
@@ -202,6 +203,7 @@ namespace UnoWinUINet5
 
             string[] source = new string[] { "item1", "item2", "item3", "item2", "item3", "item2", "item3" };
             listView.ItemsSource = source;
+
 
             StandardPopup2.LostFocus += StandardPopup_LostFocus2;
             brdr2.PointerExited += Brdr2_PointerExited;

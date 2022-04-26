@@ -21,7 +21,7 @@
         <Border Background="red" Grid.Column="1" Height="50"/>
         <Border Background="Green" Grid.Column="1" Grid.Row="1" Height="50"/>
         <Border Background="blue" Grid.Column="0" Height="50"/>
-        <Border Background="yellow" Grid.Column="0" Grid.Row="1" Height="50"/>
+        <Border Background="brown" Grid.Column="0" Grid.Row="1" Height="50"/>
 
         <Button Grid.Column="1" Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked"/>
         <Popup Grid.Column="1"  x:Name="StandardPopup" >
