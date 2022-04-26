@@ -8,13 +8,43 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid x:Name="gridgrid" >
+    <Grid x:Name="Output" VerticalAlignment="Top" >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="FontsCombo" Header="Fonts" Height="150" Width="296" 
-          ItemsSource="{x:Bind fonts}" DisplayMemberPath="Source"/>
-        <TextBox x:Name="tb" Grid.Column="1"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+       
+        <Border Background="red" Grid.Column="1" Height="50"/>
+        <Border Background="Green" Grid.Column="1" Grid.Row="1" Height="50"/>
+        <Border Background="blue" Grid.Column="0" Height="50"/>
+        <Border Background="yellow" Grid.Column="0" Grid.Row="1" Height="50"/>
+
+        <Button Grid.Column="1" Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked"/>
+        <Popup Grid.Column="1"  x:Name="StandardPopup" >
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                BorderThickness="2" Width="200" Height="200">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
+                    <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Popup>
+
+        <Button Grid.Column="0" Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked2"/>
+        <Popup Grid.Column="0"  x:Name="StandardPopup2" >
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                BorderThickness="2" Width="200" Height="200">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
+                    <Button Content="Close" Click="ClosePopupClicked2" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Popup>
     </Grid>
 </Page>

@@ -30,12 +30,37 @@ namespace UnoWinUINet5
             fonts.Add(new FontFamily("Arial"));
             fonts.Add(new FontFamily("Courier New"));
             fonts.Add(new FontFamily("Times New Roman"));
-            gridgrid.PointerPressed += Gridgrid_PointerPressed;
+           // gridgrid.PointerPressed += Gridgrid_PointerPressed;
         }
 
-        private void Gridgrid_PointerPressed(object sender, PointerRoutedEventArgs e)
+        //private void Gridgrid_PointerPressed(object sender, PointerRoutedEventArgs e)
+        //{
+        //    tb.Focus(FocusState.Programmatic);
+        //}
+
+        private void ClosePopupClicked(object sender, RoutedEventArgs e)
         {
-            tb.Focus(FocusState.Programmatic);
+            // if the Popup is open, then close it 
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+        }
+
+        // Handles the Click event on the Button on the page and opens the Popup. 
+        private void ShowPopupOffsetClicked(object sender, RoutedEventArgs e)
+        {
+            // open the Popup if it isn't open already 
+            if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+        }
+        private void ClosePopupClicked2(object sender, RoutedEventArgs e)
+        {
+            // if the Popup is open, then close it 
+            if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
+        }
+
+        // Handles the Click event on the Button on the page and opens the Popup. 
+        private void ShowPopupOffsetClicked2(object sender, RoutedEventArgs e)
+        {
+            // open the Popup if it isn't open already 
+            if (!StandardPopup2.IsOpen) { StandardPopup2.IsOpen = true; }
         }
     }
 }
