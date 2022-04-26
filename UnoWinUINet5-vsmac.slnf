@@ -1,0 +1,18 @@
+{
+  "solution": {
+    "path": "UnoWinUINet5.sln",
+    "projects": [
+		"UnoWinUINet5.Shared\\UnoWinUINet5.Shared.shproj",
+
+		"UnoWinUINet5.Droid\\UnoWinUINet5.Droid.csproj",
+
+		"UnoWinUINet5.iOS\\UnoWinUINet5.iOS.csproj",
+
+		"UnoWinUINet5.Wasm\\UnoWinUINet5.Wasm.csproj",
+
+		"UnoWinUINet5.macOS\\UnoWinUINet5.macOS.csproj",
+
+		"UnoWinUINet5.Skia.Gtk\\UnoWinUINet5.Skia.Gtk.csproj",
+    ]
+  }
+}
