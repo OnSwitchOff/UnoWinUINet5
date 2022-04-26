@@ -27,8 +27,8 @@
         <Popup Grid.Column="1"  x:Name="StandardPopup" >
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                BorderThickness="2" Width="200" Height="200">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                BorderThickness="2" Width="200" Height="200" x:Name="brdr1">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
                     <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
                     <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center"/>
                 </StackPanel>

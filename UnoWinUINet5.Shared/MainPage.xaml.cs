@@ -40,6 +40,8 @@ namespace UnoWinUINet5
 
         private void ClosePopupClicked(object sender, RoutedEventArgs e)
         {
+
+            StandardPopup.LostFocus -= StandardPopup_LostFocus;
             // if the Popup is open, then close it 
             if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
         }
@@ -49,9 +51,79 @@ namespace UnoWinUINet5
         {
             // open the Popup if it isn't open already 
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+
+            StandardPopup.LostFocus += StandardPopup_LostFocus;
+
+            StandardPopup.PointerExited += StandardPopup_PointerExited;
+
+            StandardPopup.PointerCaptureLost += StandardPopup_PointerCaptureLost;
+
+            StandardPopup.RightTapped += StandardPopup_RightTapped;
+
+            StandardPopup.LosingFocus += StandardPopup_LosingFocus;
+
+            StandardPopup.PointerEntered += StandardPopup_PointerEntered;
+
+            StandardPopup.PointerMoved += StandardPopup_PointerMoved;
+
+            StandardPopup.Tapped += StandardPopup_Tapped;
+
+            brdr1.PointerExited += Brdr1_PointerExited;
         }
+
+        private void Brdr1_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            brdr1.PointerExited -= Brdr1_PointerExited;
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+        }
+
+        private void StandardPopup_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void StandardPopup_PointerMoved(object sender, PointerRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void StandardPopup_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void StandardPopup_LosingFocus(UIElement sender, LosingFocusEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void StandardPopup_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void StandardPopup_PointerCaptureLost(object sender, PointerRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void StandardPopup_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            StandardPopup.PointerExited -= StandardPopup_PointerExited;
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+        }
+
+        private void StandardPopup_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+            StandardPopup.LostFocus -= StandardPopup_LostFocus;
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+        }
+
         private void ClosePopupClicked2(object sender, RoutedEventArgs e)
         {
+
+            StandardPopup2.LostFocus -= StandardPopup_LostFocus2;
             // if the Popup is open, then close it 
             if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
         }
@@ -61,6 +133,15 @@ namespace UnoWinUINet5
         {
             // open the Popup if it isn't open already 
             if (!StandardPopup2.IsOpen) { StandardPopup2.IsOpen = true; }
+
+            StandardPopup2.LostFocus += StandardPopup_LostFocus2;
+        }
+
+        private void StandardPopup_LostFocus2(object sender, RoutedEventArgs e)
+        {
+
+            StandardPopup2.LostFocus -= StandardPopup_LostFocus2;
+            if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
         }
     }
 }
