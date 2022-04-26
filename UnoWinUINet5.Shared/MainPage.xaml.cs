@@ -15,6 +15,8 @@ using Microsoft.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
 using System.Xml;
 using Microsoft.UI.Xaml.Markup;
+using Microsoft.UI;
+
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -178,7 +180,13 @@ namespace UnoWinUINet5
             // open the Popup if it isn't open already 
 
             popup = new Popup();
-     
+
+
+            Border bg = new Border();
+            bg.BorderThickness = new Thickness(2);
+            bg.BorderBrush = new SolidColorBrush(Colors.Blue);
+            bg.Background = new SolidColorBrush(Colors.White);
+
 
             ScrollViewer scrollViewer = new ScrollViewer();
             scrollViewer.MaxHeight = 200;
@@ -195,7 +203,6 @@ namespace UnoWinUINet5
             string[] source = new string[] { "item1", "item2", "item3", "item2", "item3", "item2", "item3" };
             listView.ItemsSource = source;
 
-            if (!StandardPopup2.IsOpen) { StandardPopup2.IsOpen = true; }
             StandardPopup2.LostFocus += StandardPopup_LostFocus2;
             brdr2.PointerExited += Brdr2_PointerExited;
             lb.SelectionChanged += Lb_SelectionChanged;
@@ -203,7 +210,8 @@ namespace UnoWinUINet5
             scrollViewer.Content = listView;
             cbbx3.Children.Add(popup);
             Grid.SetColumnSpan(popup, 2);
-            popup.Child = scrollViewer;
+            bg.Child = scrollViewer;
+            popup.Child = bg;
        
 
             scrollViewer.PointerExited += ScrollViewer_PointerExited;
@@ -225,6 +233,32 @@ namespace UnoWinUINet5
             popup.IsOpen = false;
             listView.SelectionChanged -= ListView_SelectionChanged;
             cbbx3.Children.Remove(popup);
+        }
+
+
+        private void ShowPopupOffsetClicked4(object sender, RoutedEventArgs e)
+        {
+            // open the Popup if it isn't open already 
+            if (!StandardPopup4.IsOpen) { StandardPopup4.IsOpen = true; }
+            scr4.Width = cbbx4.ActualWidth;
+            brdr4.PointerExited += Brdr4_PointerExited; 
+            lb4.SelectionChanged += Lb_SelectionChanged4; 
+
+        }
+
+        private void Lb_SelectionChanged4(object sender, SelectionChangedEventArgs e)
+        {
+            lbl4.Text = (lb4.SelectedValue as TextBlock).Text;
+            lb4.SelectionChanged -= Lb_SelectionChanged4;
+            brdr4.PointerExited -= Brdr4_PointerExited;
+            if (StandardPopup4.IsOpen) { StandardPopup4.IsOpen = false; }
+        }
+
+        private void Brdr4_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            lb4.SelectionChanged -= Lb_SelectionChanged4;
+            brdr4.PointerExited -= Brdr4_PointerExited;
+            if (StandardPopup4.IsOpen) { StandardPopup4.IsOpen = false; }
         }
     }
 }

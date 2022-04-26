@@ -22,6 +22,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Reference Include="System.Drawing.Common">
+	    <HintPath>..\..\..\Program Files\Microsoft Visual Studio\2022\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.Mac\v2.0\Facades\System.Drawing.Common.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+	<ItemGroup>
 		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.18362.22" />
 		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.18362.22" />
 	</ItemGroup>
