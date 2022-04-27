@@ -1,6 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
+using System.Collections.ObjectModel;
 
 
 
@@ -13,6 +14,12 @@ namespace UnoWinUINet5.UserControls
         public MyCombo2()
         {
             this.InitializeComponent();
+            ObservableCollection<Item> source = new ObservableCollection<Item>();
+            for (int i = 0; i < 10; i++)
+            {
+                source.Add(new Item() { Text = "Item" + i });
+            }
+            PopupListView.ItemsSource = source;
         }
 
         private void ShowPopup(object sender, RoutedEventArgs e)
@@ -46,7 +53,10 @@ namespace UnoWinUINet5.UserControls
             {
                 return (selectedValue as TextBlock).Text;
             }
-
+            if (type == typeof(Item))
+            {
+                return (selectedValue as Item).Text;
+            }
 
             return selectedValue.ToString();
         }
@@ -56,6 +66,11 @@ namespace UnoWinUINet5.UserControls
             PopupListView.SelectionChanged -= PopupListView_SelectionChanged;
             PopupBorder.PointerExited -= PopupBorder_PointerExited;
             if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+        }
+
+        private class Item
+        {
+            public string Text { get; set; }
         }
     }
 }

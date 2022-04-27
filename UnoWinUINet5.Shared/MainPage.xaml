@@ -91,7 +91,6 @@
                 BorderThickness="2"  x:Name="brdr4">
                     <ScrollViewer  MaxHeight="200" x:Name="scr4">
                         <ListView x:Name="lb4">
-                            <TextBlock Text="Arial" FontFamily="Arial"/>
                             <TextBlock Text="Courier New" FontFamily="Courier New"/>
                             <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
                             <TextBlock Text="Arial" FontFamily="Arial"/>

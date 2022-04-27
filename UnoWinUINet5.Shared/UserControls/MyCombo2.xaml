@@ -14,19 +14,18 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="MainTextBox"  VerticalAlignment="Center"/>
+        <TextBlock x:Name="MainTextBox"  VerticalAlignment="Center" />
         <Button x:Name="MainButton" Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="0" BorderBrush="Blue"  CornerRadius="0" Margin="0"
                 Content="иет"/>
         <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup" >
             <Border x:Name="PopupBorder">
                 <ScrollViewer  x:Name="PopupScrolViewer">
                     <ListView x:Name="PopupListView">
-                        <TextBlock Text="Arial" FontFamily="Arial"/>
-                        <TextBlock Text="Courier New" FontFamily="Courier New"/>
-                        <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
-                        <TextBlock Text="Arial" FontFamily="Arial"/>
-                        <TextBlock Text="Courier New" FontFamily="Courier New"/>
-                        <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Text}" FontFamily="Arial"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                     </ListView>
                 </ScrollViewer>
             </Border>
