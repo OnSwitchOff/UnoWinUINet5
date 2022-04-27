@@ -14,6 +14,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
+        <TextBox x:Name="TextBox2" />
         <TextBlock x:Name="MainTextBox"  VerticalAlignment="Center" />
         <Button x:Name="MainButton" Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="0" BorderBrush="Blue"  CornerRadius="0" Margin="0"
                 Content="иет"/>

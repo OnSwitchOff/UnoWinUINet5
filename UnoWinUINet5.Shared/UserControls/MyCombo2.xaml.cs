@@ -20,6 +20,24 @@ namespace UnoWinUINet5.UserControls
                 source.Add(new Item() { Text = "Item" + i });
             }
             PopupListView.ItemsSource = source;
+            TextBox2.Visibility = Visibility.Collapsed;
+            MainTextBox.PointerPressed += MainTextBox_PointerPressed;
+            TextBox2.LostFocus += TextBox2_LostFocus;
+        }
+
+        private void TextBox2_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox2.Visibility = Visibility.Collapsed;
+            MainTextBox.Visibility = Visibility.Visible;
+        }
+
+        private void MainTextBox_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            TextBox2.Text = MainTextBox.Text;
+            TextBox2.Visibility = Visibility.Visible;
+            TextBox2.Focus(FocusState.Programmatic);
+            TextBox2.SelectionStart = TextBox2.Text.Length;
+            MainTextBox.Visibility = Visibility.Collapsed;
         }
 
         private void ShowPopup(object sender, RoutedEventArgs e)
@@ -38,6 +56,8 @@ namespace UnoWinUINet5.UserControls
             PopupListView.SelectionChanged -= PopupListView_SelectionChanged;
             PopupBorder.PointerExited -= PopupBorder_PointerExited;
             if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+            TextBox2.Visibility = Visibility.Collapsed;
+            MainTextBox.Visibility = Visibility.Visible;
         }
 
         private string GetSelectedValueString(object selectedValue)
