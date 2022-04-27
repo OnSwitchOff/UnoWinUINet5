@@ -33,4 +33,8 @@
 	</ItemGroup>
 
 	<Import Project="..\UnoWinUINet5.Shared\UnoWinUINet5.Shared.projitems" Label="Shared" />
+
+	<ItemGroup>
+	  <_Globbed_Compile Remove="DefaultItem.cs" />
+	</ItemGroup>
 </Project>

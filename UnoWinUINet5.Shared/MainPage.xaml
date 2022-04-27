@@ -6,10 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:uc="using:UnoWinUINet5.UserControls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
 
     <Grid x:Name="Output" VerticalAlignment="Top" >
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -22,8 +25,14 @@
         <Border Background="Green" Grid.Column="1" Grid.Row="1" Height="50"/>
         <Border Background="blue" Grid.Column="0" Height="50"/>
         <Border Background="brown" Grid.Column="0" Grid.Row="1" Height="50"/>
+        <Border Background="OrangeRed" Grid.Column="2" Grid.Row="1" Height="50"/>
 
-        <Button Grid.Column="1" Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked"/>
+
+        <uc:MyComboBox Grid.Row="1" Grid.Column="2" Height="30" MainTextBoxIsReadOnly="False"  ></uc:MyComboBox>
+
+        <TextBox Grid.Column="2" Text="Text" Height="32" />
+
+        <Button Grid.Column="1"  Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked" BorderThickness="2" Background="{StaticResource ApplicationPageBackgroundThemeBrush}" CornerRadius="0" BorderBrush="{StaticResource AppBarBorderThemeBrush}" />
         <Popup Grid.Column="1"  x:Name="StandardPopup" >
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
@@ -47,13 +56,12 @@
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
                 BorderThickness="2"  x:Name="brdr2">
                     <ScrollViewer  MaxHeight="200"  Width="{Binding ElementName=cbbx2,Path=ActualWidth,Mode=TwoWay}">
-                        <ListView x:Name="lb">
-                            <TextBlock Text="Arial" FontFamily="Arial"/>
-                            <TextBlock Text="Courier New" FontFamily="Courier New"/>
-                            <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
-                            <TextBlock Text="Arial" FontFamily="Arial"/>
-                            <TextBlock Text="Courier New" FontFamily="Courier New"/>
-                            <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
+                        <ListView x:Name="lb" ItemsSource="">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding .}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
                     </ScrollViewer>
                 </Border>
@@ -66,7 +74,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="lbl3" VerticalAlignment="Center" Padding="10,0" Foreground="White"/>
+            <TextBox x:Name="lbl3" VerticalAlignment="Center"  Padding="10,0" Foreground="White"/>
             <Button Grid.Column="1"  Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked3"/>
         </Grid>
 
