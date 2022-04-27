@@ -11,10 +11,12 @@
   <Import Project="UnoWinUINet5.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
   <ItemGroup>
+    <_Globbed_Compile Remove="UserControls\MyCombo2.xaml.cs" />
     <_Globbed_Compile Remove="UserControls\MyComboBox.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <_Globbled_Page Remove="Resources\MyResourceDictionary.xaml" />
+    <_Globbled_Page Remove="UserControls\MyCombo2.xaml" />
     <_Globbled_Page Remove="UserControls\MyComboBox.xaml" />
   </ItemGroup>
 </Project>
