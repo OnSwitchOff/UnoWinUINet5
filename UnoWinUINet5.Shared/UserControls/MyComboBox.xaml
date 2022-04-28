@@ -9,7 +9,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400"
     x:Name="UC" >
-    <Grid x:Name="MainGrid" BorderThickness="2" BorderBrush="{StaticResource ApplicationPageBackgroundThemeBrush}"
+    <Grid BorderThickness="1"  CornerRadius="0" BorderBrush="Black" x:Name="MainGrid" 
           Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -18,13 +18,13 @@
         <TextBlock x:Name="MainTextBox"  VerticalAlignment="Center"
                  Foreground ="{Binding ElementName=UC, Path=MainTextBoxForeground}"
                  Padding ="{Binding ElementName=UC,Path=MainTextBoxPadding}"/>
-        <Button x:Name="MainButton" Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="0" BorderBrush="Blue"  CornerRadius="0" Margin="0"
+        <Button x:Name="MainButton" Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="1,0,0,0" BorderBrush="Black"  CornerRadius="0" Margin="0"
                 Content="{Binding ElementName=UC,Path=MainButtonContent}"/>
         <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup" >
             <Border x:Name="PopupBorder"
-                    BorderBrush ="{Binding ElementName=UC,Path=PopupBorderBorderBrush}"
+                    BorderBrush ="Black"
                     Background ="{Binding ElementName=UC,Path=PopupBorderBackground}"
-                    BorderThickness ="{Binding ElementName=UC,Path=PopupBorderBorderThickness}">
+                    BorderThickness ="1">
                 <ScrollViewer  x:Name="PopupScrolViewer"
                                MaxHeight ="{Binding ElementName=UC,Path=PopupScrollViewerMaxHeight}">
                     <ListView x:Name="PopupListView" 

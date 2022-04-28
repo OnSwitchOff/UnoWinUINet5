@@ -7,24 +7,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    x:Name="UC2">
 
-    <Grid x:Name="MainGrid" BorderThickness="2" >
+    <Grid x:Name="MainGrid" BorderThickness="2" Margin="2" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="TextBox2" />
-        <TextBlock x:Name="MainTextBox"  VerticalAlignment="Center" />
+        <TextBox x:Name="TextBox2"  VerticalAlignment="Center" Padding="10,0" />
+        <TextBlock x:Name="MainTextBox"  VerticalAlignment="Center" Padding="10,0" />
         <Button x:Name="MainButton" Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="0" BorderBrush="Blue"  CornerRadius="0" Margin="0"
                 Content="иет"/>
         <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup" >
             <Border x:Name="PopupBorder">
-                <ScrollViewer  x:Name="PopupScrolViewer">
+                <ScrollViewer  x:Name="PopupScrolViewer" MaxHeight="300" Background="{StaticResource AppBarBackgroundThemeBrush}" BorderThickness="2" BorderBrush="Black">
                     <ListView x:Name="PopupListView">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Text}" FontFamily="Arial"/>
+                                <Grid>
+                                    <TextBlock Text="{Binding Text}" FontFamily="Arial" Foreground="{Binding ElementName=UC2, Path=MainTextBoxForeground}" />
+                                </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

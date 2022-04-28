@@ -190,7 +190,8 @@ namespace UnoWinUINet5.UserControls
         {
             // open the Popup if it isn't open already 
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
-            PopupScrolViewer.Width = MainGrid.ActualWidth;
+            PopupScrolViewer.Width = MainGrid.ActualWidth - MainGrid.BorderThickness.Left - PopupBorder.BorderThickness.Left-1;
+            StandardPopup.Margin = new Thickness(0,MainGrid.ActualHeight- MainGrid.BorderThickness.Top - PopupBorder.BorderThickness.Top, 0,0);
             PopupBorder.PointerExited += PopupBorder_PointerExited; 
             PopupListView.SelectionChanged += PopupListView_SelectionChanged; 
 

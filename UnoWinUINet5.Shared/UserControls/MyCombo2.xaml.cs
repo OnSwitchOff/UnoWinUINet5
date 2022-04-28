@@ -1,5 +1,6 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.ObjectModel;
 
@@ -11,6 +12,19 @@ namespace UnoWinUINet5.UserControls
 {
     public sealed partial class MyCombo2 : UserControl
     {
+
+        public static readonly DependencyProperty MainTextBoxForegroundProperty = DependencyProperty
+           .Register("MainTextBoxForeground",
+               typeof(Brush),
+               typeof(MyComboBox),
+               new PropertyMetadata(Application.Current.Resources["ApplicationForegroundThemeBrush"] as Brush));
+
+        public Brush MainTextBoxForeground
+        {
+            get { return (Brush)GetValue(MainTextBoxForegroundProperty); }
+            set { SetValue(MainTextBoxForegroundProperty, value); }
+        }
+
         public MyCombo2()
         {
             this.InitializeComponent();
@@ -27,7 +41,7 @@ namespace UnoWinUINet5.UserControls
 
         private void TextBox2_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox2.Visibility = Visibility.Collapsed;
+            TextBox2.Visibility = Visibility.Collapsed; 
             MainTextBox.Visibility = Visibility.Visible;
         }
 
@@ -37,7 +51,7 @@ namespace UnoWinUINet5.UserControls
             TextBox2.Visibility = Visibility.Visible;
             TextBox2.Focus(FocusState.Programmatic);
             TextBox2.SelectionStart = TextBox2.Text.Length;
-            MainTextBox.Visibility = Visibility.Collapsed;
+            MainTextBox.Visibility = Visibility.Collapsed; ;
         }
 
         private void ShowPopup(object sender, RoutedEventArgs e)
@@ -56,7 +70,7 @@ namespace UnoWinUINet5.UserControls
             PopupListView.SelectionChanged -= PopupListView_SelectionChanged;
             PopupBorder.PointerExited -= PopupBorder_PointerExited;
             if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
-            TextBox2.Visibility = Visibility.Collapsed;
+            TextBox2.Visibility = Visibility.Collapsed; ;
             MainTextBox.Visibility = Visibility.Visible;
         }
 

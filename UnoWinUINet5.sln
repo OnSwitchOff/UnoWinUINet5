@@ -160,6 +160,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		UnoWinUINet5.Shared\UnoWinUINet5.Shared.projitems*{1aa13270-f438-4864-9435-54fd806e10ea}*SharedItemsImports = 5
+		UnoWinUINet5.Shared\UnoWinUINet5.Shared.projitems*{48bff61f-2b4a-4f8d-80de-38f1b791aba3}*SharedItemsImports = 4
 		UnoWinUINet5.Shared\UnoWinUINet5.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
