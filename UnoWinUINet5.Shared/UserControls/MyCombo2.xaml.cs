@@ -1,5 +1,6 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.ObjectModel;
@@ -19,6 +20,23 @@ namespace UnoWinUINet5.UserControls
               typeof(MyCombo2),
               new PropertyMetadata(GetDefaultListViewItemsSource()));
 
+        public static readonly DependencyProperty PopupListViewItemTemplateProperty = DependencyProperty
+          .Register("PopupListViewItemTemplate",
+              typeof(DataTemplate),
+              typeof(MyCombo2),
+              new PropertyMetadata(GetDefaultListViewDataTemplate()));
+
+        public DataTemplate PopupListViewItemTemplate
+        {
+            get { return (DataTemplate)GetValue(PopupListViewItemTemplateProperty); }
+            set { SetValue(PopupListViewItemTemplateProperty, value); }
+        }
+
+        private static DataTemplate GetDefaultListViewDataTemplate()
+        {
+            DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Foreground=\"Red\"  Text =\"{Binding Path=Text}\"/></DataTemplate>") as DataTemplate;
+            return dataTemplate;
+        }
 
         private static object GetDefaultListViewItemsSource()
         {
