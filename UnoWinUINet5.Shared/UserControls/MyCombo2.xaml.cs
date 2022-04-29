@@ -82,7 +82,7 @@ namespace UnoWinUINet5.UserControls
 
         private static DataTemplate GetDefaultListViewDataTemplate()
         {
-            DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Foreground=\"Red\"  Text =\"{Binding Path=Text}\"/></DataTemplate>") as DataTemplate;
+            DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock   Text =\"{Binding Path=Text}\"/></DataTemplate>") as DataTemplate;
             return dataTemplate;
         }
 
@@ -111,33 +111,28 @@ namespace UnoWinUINet5.UserControls
             //    source.Add(new Item() { Text = "Item" + i });
             //}
             //PopupListView.ItemsSource = source;
-            TextBox2.Visibility = Visibility.Collapsed;
             MainTextBox.PointerPressed += MainTextBox_PointerPressed;
-            TextBox2.LostFocus += TextBox2_LostFocus;
         }
 
         private void TextBox2_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox2.Visibility = Visibility.Collapsed; 
             MainTextBox.Visibility = Visibility.Visible;
         }
 
         private void MainTextBox_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
-            TextBox2.Text = MainTextBox.Text;
-            TextBox2.Visibility = Visibility.Visible;
-            TextBox2.Focus(FocusState.Programmatic);
-            TextBox2.SelectionStart = TextBox2.Text.Length;
-            MainTextBox.Visibility = Visibility.Collapsed; ;
+            //MainTextBox.Visibility = Visibility.Collapsed; 
         }
 
         private void ShowPopup(object sender, RoutedEventArgs e)
         {
             // open the Popup if it isn't open already 
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
-            PopupScrolViewer.Width = MainGrid.ActualWidth;
+            //PopupScrolViewer.Width = MainGrid.ActualWidth;
             PopupBorder.PointerExited += PopupBorder_PointerExited;
             PopupListView.SelectionChanged += PopupListView_SelectionChanged;
+            PopupScrolViewer.Width = MainGrid.ActualWidth - MainGrid.BorderThickness.Left - PopupBorder.BorderThickness.Left - 1;
+            StandardPopup.Margin = new Thickness(0, MainGrid.ActualHeight - MainGrid.BorderThickness.Top - PopupBorder.BorderThickness.Top, 0, 0);
 
         }
 
@@ -147,7 +142,6 @@ namespace UnoWinUINet5.UserControls
             PopupListView.SelectionChanged -= PopupListView_SelectionChanged;
             PopupBorder.PointerExited -= PopupBorder_PointerExited;
             if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
-            TextBox2.Visibility = Visibility.Collapsed; ;
             MainTextBox.Visibility = Visibility.Visible;
         }
 
