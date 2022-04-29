@@ -15,7 +15,7 @@ namespace UnoWinUINet5.UserControls
 
         public static readonly DependencyProperty PopupListViewItemsSourceProperty = DependencyProperty
           .Register("PopupListViewItemsSource",
-              typeof(object),
+              typeof(ObservableCollection<Item>),
               typeof(MyCombo2),
               new PropertyMetadata(GetDefaultListViewItemsSource()));
 
@@ -30,9 +30,9 @@ namespace UnoWinUINet5.UserControls
             return source;
         }
 
-        public object PopupListViewItemsSource
+        public ObservableCollection<Item> PopupListViewItemsSource
         {
-            get { return (DataTemplate)GetValue(PopupListViewItemsSourceProperty); }
+            get { return (ObservableCollection<Item>)GetValue(PopupListViewItemsSourceProperty); }
             set { SetValue(PopupListViewItemsSourceProperty, value); }
         }
 
@@ -113,7 +113,7 @@ namespace UnoWinUINet5.UserControls
             if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
         }
 
-        private class Item
+        public class Item
         {
             public string Text { get; set; }
         }

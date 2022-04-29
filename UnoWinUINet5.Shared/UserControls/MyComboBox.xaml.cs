@@ -153,7 +153,7 @@ namespace UnoWinUINet5.UserControls
 
         public object PopupListViewItemsSource
         {
-            get { return (DataTemplate)GetValue(PopupListViewItemsSourceProperty); }
+            get { return GetValue(PopupListViewItemsSourceProperty); }
             set { SetValue(PopupListViewItemsSourceProperty, value); }
         }
 

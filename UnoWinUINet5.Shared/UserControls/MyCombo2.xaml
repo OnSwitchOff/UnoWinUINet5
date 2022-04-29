@@ -26,7 +26,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <TextBlock Text="{Binding Path=Source}" FontFamily="Arial" Foreground="Black"/>
+                                    <TextBlock Text="{Binding Path=Text}" FontFamily="Arial" Foreground="Black"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

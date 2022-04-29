@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Xml;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI;
+using static UnoWinUINet5.UserControls.MyCombo2;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -27,15 +28,21 @@ namespace UnoWinUINet5
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public ObservableCollection<Item> source = new ObservableCollection<Item>();
         public ObservableCollection<FontFamily> fonts = new ObservableCollection<FontFamily>();
         public MainPage()
         {
             this.InitializeComponent();
-            this.Foreground = new SolidColorBrush(Colors.Black);
+
             fonts.Add(new FontFamily("Arial"));
             fonts.Add(new FontFamily("Courier New"));
             fonts.Add(new FontFamily("Times New Roman"));
-           // gridgrid.PointerPressed += Gridgrid_PointerPressed;
+
+            for (int i = 0; i < 10; i++)
+            {
+                source.Add(new Item() { Text = "Item" + i });
+            }
+            // gridgrid.PointerPressed += Gridgrid_PointerPressed;
         }
 
         //private void Gridgrid_PointerPressed(object sender, PointerRoutedEventArgs e)
