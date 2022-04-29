@@ -14,6 +14,54 @@ namespace UnoWinUINet5.UserControls
     public sealed partial class MyCombo2 : UserControl
     {
 
+        #region MainTextBlock DependecyProperties
+        public static readonly DependencyProperty MainTextBoxForegroundProperty = DependencyProperty
+           .Register("MainTextBoxForeground",
+               typeof(Brush),
+               typeof(MyCombo2),
+               new PropertyMetadata(GetMainTextBoxForeground()));
+
+        private static Brush GetMainTextBoxForeground()
+        {
+            if (Application.Current.Resources.Keys.Contains("ApplicationForegroundThemeBrush"))
+            {
+                return Application.Current.Resources["ApplicationForegroundThemeBrush"] as Brush;
+            }
+
+            LinearGradientBrush linearGradientBrush = new LinearGradientBrush();
+
+            linearGradientBrush.StartPoint = new Windows.Foundation.Point(0, 0);
+            linearGradientBrush.EndPoint = new Windows.Foundation.Point(0, 1);        
+
+            GradientStopCollection gradientStops = new GradientStopCollection();
+
+            GradientStop gradientStop1 = new GradientStop();
+            gradientStop1.Color = Windows.UI.Color.FromArgb((byte)0xFF, (byte)0xA3, (byte)0xAE, (byte)0xB9);
+            gradientStop1.Offset = 0.0;
+            gradientStops.Add(gradientStop1);
+            GradientStop gradientStop2 = new GradientStop();
+            gradientStop1.Color = Windows.UI.Color.FromArgb((byte)0xFF, (byte)0x71, (byte)0x85, (byte)0x97);
+            gradientStop1.Offset = 0.375;
+            gradientStops.Add(gradientStop2);
+            GradientStop gradientStop3 = new GradientStop();
+            gradientStop1.Color = Windows.UI.Color.FromArgb((byte)0xFF, (byte)0x61, (byte)0x75, (byte)0x84);
+            gradientStop1.Offset = 1.0;
+            gradientStops.Add(gradientStop3);
+
+            (linearGradientBrush as GradientBrush).GradientStops = gradientStops;
+
+            return linearGradientBrush;
+        }
+
+        public Brush MainTextBoxForeground
+        {
+            get { return (Brush)GetValue(MainTextBoxForegroundProperty); }
+            set { SetValue(MainTextBoxForegroundProperty, value); }
+        }
+
+        #endregion
+
+
         public static readonly DependencyProperty PopupListViewItemsSourceProperty = DependencyProperty
           .Register("PopupListViewItemsSource",
               typeof(ObservableCollection<Item>),
@@ -38,6 +86,12 @@ namespace UnoWinUINet5.UserControls
             return dataTemplate;
         }
 
+        public ObservableCollection<Item> PopupListViewItemsSource
+        {
+            get { return (ObservableCollection<Item>)GetValue(PopupListViewItemsSourceProperty); }
+            set { SetValue(PopupListViewItemsSourceProperty, value); }
+        }
+
         private static object GetDefaultListViewItemsSource()
         {
             ObservableCollection<Item> source = new ObservableCollection<Item>();
@@ -46,12 +100,6 @@ namespace UnoWinUINet5.UserControls
                 source.Add(new Item() { Text = "Item" + i });
             }
             return source;
-        }
-
-        public ObservableCollection<Item> PopupListViewItemsSource
-        {
-            get { return (ObservableCollection<Item>)GetValue(PopupListViewItemsSourceProperty); }
-            set { SetValue(PopupListViewItemsSourceProperty, value); }
         }
 
         public MyCombo2()
