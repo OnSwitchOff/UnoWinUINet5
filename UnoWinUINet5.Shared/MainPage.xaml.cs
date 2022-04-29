@@ -27,7 +27,7 @@ namespace UnoWinUINet5
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        ObservableCollection<FontFamily> fonts = new ObservableCollection<FontFamily>();
+        public ObservableCollection<FontFamily> fonts = new ObservableCollection<FontFamily>();
         public MainPage()
         {
             this.InitializeComponent();

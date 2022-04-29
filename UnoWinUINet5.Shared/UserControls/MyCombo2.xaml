@@ -22,11 +22,11 @@
         <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup" >
             <Border x:Name="PopupBorder">
                 <ScrollViewer  x:Name="PopupScrolViewer" MaxHeight="300" Background="{StaticResource AppBarBackgroundThemeBrush}" BorderThickness="2" BorderBrush="Black">
-                    <ListView x:Name="PopupListView">
+                    <ListView x:Name="PopupListView" ItemsSource="{Binding ElementName=UC2, Path=PopupListViewItemsSource}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <TextBlock Text="{Binding Text}" FontFamily="Arial" Foreground="{Binding ElementName=UC2, Path=MainTextBoxForeground}" />
+                                    <TextBlock Text="{Binding Path=Source}" FontFamily="Arial" Foreground="Black"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

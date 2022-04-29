@@ -13,27 +13,38 @@ namespace UnoWinUINet5.UserControls
     public sealed partial class MyCombo2 : UserControl
     {
 
-        public static readonly DependencyProperty MainTextBoxForegroundProperty = DependencyProperty
-           .Register("MainTextBoxForeground",
-               typeof(Brush),
-               typeof(MyComboBox),
-               new PropertyMetadata(Application.Current.Resources["ApplicationForegroundThemeBrush"] as Brush));
+        public static readonly DependencyProperty PopupListViewItemsSourceProperty = DependencyProperty
+          .Register("PopupListViewItemsSource",
+              typeof(object),
+              typeof(MyCombo2),
+              new PropertyMetadata(GetDefaultListViewItemsSource()));
 
-        public Brush MainTextBoxForeground
-        {
-            get { return (Brush)GetValue(MainTextBoxForegroundProperty); }
-            set { SetValue(MainTextBoxForegroundProperty, value); }
-        }
 
-        public MyCombo2()
+        private static object GetDefaultListViewItemsSource()
         {
-            this.InitializeComponent();
             ObservableCollection<Item> source = new ObservableCollection<Item>();
             for (int i = 0; i < 10; i++)
             {
                 source.Add(new Item() { Text = "Item" + i });
             }
-            PopupListView.ItemsSource = source;
+            return source;
+        }
+
+        public object PopupListViewItemsSource
+        {
+            get { return (DataTemplate)GetValue(PopupListViewItemsSourceProperty); }
+            set { SetValue(PopupListViewItemsSourceProperty, value); }
+        }
+
+        public MyCombo2()
+        {
+            this.InitializeComponent();
+            //ObservableCollection<Item> source = new ObservableCollection<Item>();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    source.Add(new Item() { Text = "Item" + i });
+            //}
+            //PopupListView.ItemsSource = source;
             TextBox2.Visibility = Visibility.Collapsed;
             MainTextBox.PointerPressed += MainTextBox_PointerPressed;
             TextBox2.LostFocus += TextBox2_LostFocus;

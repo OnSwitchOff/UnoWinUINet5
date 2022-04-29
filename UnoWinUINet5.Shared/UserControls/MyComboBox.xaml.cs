@@ -151,6 +151,12 @@ namespace UnoWinUINet5.UserControls
             set { SetValue(PopupListViewItemTemplateProperty, value); }
         }
 
+        public object PopupListViewItemsSource
+        {
+            get { return (DataTemplate)GetValue(PopupListViewItemsSourceProperty); }
+            set { SetValue(PopupListViewItemsSourceProperty, value); }
+        }
+
         public MyComboBox()
         {
             this.InitializeComponent();
@@ -172,7 +178,7 @@ namespace UnoWinUINet5.UserControls
 
         private static DataTemplate GetDefaultListViewDataTemplate()
         {
-            DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Foreground =\"{Binding ElementName=UC, Path=MainTextBoxForeground}\" Text =\"{Binding Text}\"/></DataTemplate>") as DataTemplate;
+            DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Foreground =\"{Binding ElementName=UC, Path=MainTextBoxForeground}\" Text =\"{Binding Path=Source}\"/></DataTemplate>") as DataTemplate;
             return dataTemplate;
         }
 
