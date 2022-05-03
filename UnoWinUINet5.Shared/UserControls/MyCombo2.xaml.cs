@@ -15,14 +15,14 @@ namespace UnoWinUINet5.UserControls
     public sealed partial class MyCombo2 : UserControl
     {
 
-        #region MainTextBlock DependecyProperties
-        public static readonly DependencyProperty MainTextBoxForegroundProperty = DependencyProperty
-           .Register("MainTextBoxForeground",
+        #region Main DependecyProperties
+        public static readonly DependencyProperty MainForegroundProperty = DependencyProperty
+           .Register("MainForeground",
                typeof(Brush),
                typeof(MyCombo2),
-               new PropertyMetadata(GetMainTextBoxForeground()));
+               new PropertyMetadata(GetMainForeground()));
 
-        private static Brush GetMainTextBoxForeground()
+        private static Brush GetMainForeground()
         {
 
 
@@ -65,15 +65,19 @@ namespace UnoWinUINet5.UserControls
             return linearGradientBrush;
         }
 
+        public Brush MainForeground
+        {
+            get { return (Brush)GetValue(MainForegroundProperty); }
+            set { SetValue(MainForegroundProperty, value); }
+        }
 
-
-        public static readonly DependencyProperty MainTextBoxBackgroundProperty = DependencyProperty
-          .Register("MainTextBoxBackground",
+        public static readonly DependencyProperty MainBackgroundProperty = DependencyProperty
+          .Register("MainBackground",
               typeof(Brush),
               typeof(MyCombo2),
-              new PropertyMetadata(GetMainTextBoxBackground()));
+              new PropertyMetadata(GetMainBackground()));
 
-        private static Brush GetMainTextBoxBackground()
+        private static Brush GetMainBackground()
         {
             if (App.Current.RequestedTheme == ApplicationTheme.Dark)
             {
@@ -114,50 +118,19 @@ namespace UnoWinUINet5.UserControls
             return linearGradientBrush;
         }
 
-        public Brush MainTextBoxBackground
+        public Brush MainBackground
         {
-            get { return (Brush)GetValue(MainTextBoxBackgroundProperty); }
-            set { SetValue(MainTextBoxBackgroundProperty, value); }
+            get { return (Brush)GetValue(MainBackgroundProperty); }
+            set { SetValue(MainBackgroundProperty, value); }
         }
-
-        public Brush MainTextBoxForeground
-        {
-            get { return (Brush)GetValue(MainTextBoxForegroundProperty); }
-            set { SetValue(MainTextBoxForegroundProperty, value); }
-        }
-
         #endregion
 
-
+        #region PopupListView Properties
         public static readonly DependencyProperty PopupListViewItemsSourceProperty = DependencyProperty
-          .Register("PopupListViewItemsSource",
-              typeof(ObservableCollection<Item>),
-              typeof(MyCombo2),
-              new PropertyMetadata(GetDefaultListViewItemsSource()));
-
-        public static readonly DependencyProperty PopupListViewItemTemplateProperty = DependencyProperty
-          .Register("PopupListViewItemTemplate",
-              typeof(DataTemplate),
-              typeof(MyCombo2),
-              new PropertyMetadata(GetDefaultListViewDataTemplate()));
-
-        public DataTemplate PopupListViewItemTemplate
-        {
-            get { return (DataTemplate)GetValue(PopupListViewItemTemplateProperty); }
-            set { SetValue(PopupListViewItemTemplateProperty, value); }
-        }
-
-        private static DataTemplate GetDefaultListViewDataTemplate()
-        {
-            DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock  Foreground =\"{ Binding ElementName = UC2, Path = MainTextBoxForeground}\" Text =\"{Binding Path=Text}\"/></DataTemplate>") as DataTemplate;
-            return dataTemplate;
-        }
-
-        public ObservableCollection<Item> PopupListViewItemsSource
-        {
-            get { return (ObservableCollection<Item>)GetValue(PopupListViewItemsSourceProperty); }
-            set { SetValue(PopupListViewItemsSourceProperty, value); }
-        }
+         .Register("PopupListViewItemsSource",
+             typeof(ObservableCollection<Item>),
+             typeof(MyCombo2),
+             new PropertyMetadata(GetDefaultListViewItemsSource()));
 
         private static object GetDefaultListViewItemsSource()
         {
@@ -169,21 +142,36 @@ namespace UnoWinUINet5.UserControls
             return source;
         }
 
+        public ObservableCollection<Item> PopupListViewItemsSource
+        {
+            get { return (ObservableCollection<Item>)GetValue(PopupListViewItemsSourceProperty); }
+            set { SetValue(PopupListViewItemsSourceProperty, value); }
+        }
+
+        public static readonly DependencyProperty PopupListViewItemTemplateProperty = DependencyProperty
+          .Register("PopupListViewItemTemplate",
+              typeof(DataTemplate),
+              typeof(MyCombo2),
+              new PropertyMetadata(GetDefaultListViewDataTemplate()));
+
+        private static DataTemplate GetDefaultListViewDataTemplate()
+        {
+            DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Text =\"{Binding Path=Text}\"/></DataTemplate>") as DataTemplate;
+            return dataTemplate;
+        }
+
+        public DataTemplate PopupListViewItemTemplate
+        {
+            get { return (DataTemplate)GetValue(PopupListViewItemTemplateProperty); }
+            set { SetValue(PopupListViewItemTemplateProperty, value); }
+        }
+        #endregion
+
+
         public MyCombo2()
         {
             this.InitializeComponent();
-            //ObservableCollection<Item> source = new ObservableCollection<Item>();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    source.Add(new Item() { Text = "Item" + i });
-            //}
-            //PopupListView.ItemsSource = source;
             MainTextBox.PointerPressed += MainTextBox_PointerPressed;
-        }
-
-        private void TextBox2_LostFocus(object sender, RoutedEventArgs e)
-        {
-            MainTextBox.Visibility = Visibility.Visible;
         }
 
         private void MainTextBox_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
