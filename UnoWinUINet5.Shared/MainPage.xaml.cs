@@ -17,6 +17,7 @@ using System.Xml;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI;
 using static UnoWinUINet5.UserControls.MyCombo2;
+using System.ComponentModel;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -26,7 +27,7 @@ namespace UnoWinUINet5
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : Page, INotifyPropertyChanged
     {
         public ObservableCollection<Item> source = new ObservableCollection<Item>();
         public ObservableCollection<FontFamily> fonts = new ObservableCollection<FontFamily>();
@@ -37,6 +38,7 @@ namespace UnoWinUINet5
             set
             {
                 selectedItem = value;
+                OnPropertyChanged("SelectedItem");
             }
         }
 
@@ -195,6 +197,15 @@ namespace UnoWinUINet5
 
         Popup popup;
         ListView listView;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string property)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+
+
         private void ShowPopupOffsetClicked3(object sender, RoutedEventArgs e)
         {
             // open the Popup if it isn't open already 
