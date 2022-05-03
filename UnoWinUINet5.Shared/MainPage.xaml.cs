@@ -56,7 +56,6 @@ namespace UnoWinUINet5
             }
 
             this.Loaded += MainPage_Loaded;
-            SelectedItem = source[0];
             // gridgrid.PointerPressed += Gridgrid_PointerPressed;
         }
 

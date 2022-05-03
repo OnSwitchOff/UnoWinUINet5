@@ -202,6 +202,7 @@ namespace UnoWinUINet5.UserControls
 
         private void ShowPopup(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
+            ClearBorder.Visibility = ClearBorder.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
             var t = this.SelectedItem;
             // open the Popup if it isn't open already 
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }

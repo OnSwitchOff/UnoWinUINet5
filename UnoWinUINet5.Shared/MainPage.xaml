@@ -41,7 +41,7 @@
             </uc:MyCombo2.PopupListViewItemTemplate>-->
         </uc:MyCombo2>
 
-        <Button Grid.Column="4" Content="Item0" Click="Item0Clicked" VerticalContentAlignment="Stretch"/>
+        <Button  Grid.Column="4" Content="Item0" Click="Item0Clicked" VerticalContentAlignment="Stretch"/>
 
         <TextBox Grid.Column="2" Text="Text" Height="32" />
 
