@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
@@ -23,6 +24,17 @@ namespace UnoWinUINet5.UserControls
 
         private static Brush GetMainTextBoxForeground()
         {
+
+
+            if (App.Current.RequestedTheme == ApplicationTheme.Light)
+            {
+                return new SolidColorBrush(Colors.Black);
+            }
+            if (App.Current.RequestedTheme == ApplicationTheme.Dark)
+            {
+                return new SolidColorBrush(Colors.White);
+            }
+
             if (Application.Current.Resources.Keys.Contains("ApplicationForegroundThemeBrush"))
             {
                 return Application.Current.Resources["ApplicationForegroundThemeBrush"] as Brush;
@@ -51,6 +63,61 @@ namespace UnoWinUINet5.UserControls
             (linearGradientBrush as GradientBrush).GradientStops = gradientStops;
 
             return linearGradientBrush;
+        }
+
+
+
+        public static readonly DependencyProperty MainTextBoxBackgroundProperty = DependencyProperty
+          .Register("MainTextBoxBackground",
+              typeof(Brush),
+              typeof(MyCombo2),
+              new PropertyMetadata(GetMainTextBoxBackground()));
+
+        private static Brush GetMainTextBoxBackground()
+        {
+            if (App.Current.RequestedTheme == ApplicationTheme.Dark)
+            {
+                return new SolidColorBrush(Colors.Black);
+            }
+            if (App.Current.RequestedTheme == ApplicationTheme.Light)
+            {
+                return new SolidColorBrush(Colors.White);
+            }
+
+            if (Application.Current.Resources.Keys.Contains("ApplicationPageBackgroundThemeBrush"))
+            {
+                return Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush;
+            }
+
+            LinearGradientBrush linearGradientBrush = new LinearGradientBrush();
+
+            linearGradientBrush.StartPoint = new Windows.Foundation.Point(0, 0);
+            linearGradientBrush.EndPoint = new Windows.Foundation.Point(0, 1);
+
+            GradientStopCollection gradientStops = new GradientStopCollection();
+
+            GradientStop gradientStop1 = new GradientStop();
+            gradientStop1.Color = Windows.UI.Color.FromArgb((byte)0xFF, (byte)0xA3, (byte)0xAE, (byte)0xB9);
+            gradientStop1.Offset = 0.0;
+            gradientStops.Add(gradientStop1);
+            GradientStop gradientStop2 = new GradientStop();
+            gradientStop1.Color = Windows.UI.Color.FromArgb((byte)0xFF, (byte)0x71, (byte)0x85, (byte)0x97);
+            gradientStop1.Offset = 0.375;
+            gradientStops.Add(gradientStop2);
+            GradientStop gradientStop3 = new GradientStop();
+            gradientStop1.Color = Windows.UI.Color.FromArgb((byte)0xFF, (byte)0x61, (byte)0x75, (byte)0x84);
+            gradientStop1.Offset = 1.0;
+            gradientStops.Add(gradientStop3);
+
+            (linearGradientBrush as GradientBrush).GradientStops = gradientStops;
+
+            return linearGradientBrush;
+        }
+
+        public Brush MainTextBoxBackground
+        {
+            get { return (Brush)GetValue(MainTextBoxBackgroundProperty); }
+            set { SetValue(MainTextBoxBackgroundProperty, value); }
         }
 
         public Brush MainTextBoxForeground
@@ -82,7 +149,7 @@ namespace UnoWinUINet5.UserControls
 
         private static DataTemplate GetDefaultListViewDataTemplate()
         {
-            DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock   Text =\"{Binding Path=Text}\"/></DataTemplate>") as DataTemplate;
+            DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock  Foreground =\"{ Binding ElementName = UC2, Path = MainTextBoxForeground}\" Text =\"{Binding Path=Text}\"/></DataTemplate>") as DataTemplate;
             return dataTemplate;
         }
 

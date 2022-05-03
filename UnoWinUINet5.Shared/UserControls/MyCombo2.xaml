@@ -9,34 +9,31 @@
     d:DesignHeight="300"
     d:DesignWidth="400"
     x:Name="UC2">
-
-
-
-    <Grid x:Name="MainGrid" BorderThickness="1" Margin="2"  BorderBrush="{Binding ElementName=UC2, Path=MainTextBoxForeground}" >
+    <Grid x:Name="MainGrid" BorderThickness="1" Margin="2"
+          BorderBrush ="{Binding ElementName=UC2, Path=MainTextBoxForeground}"
+          Background ="{Binding ElementName=UC2, Path=MainTextBoxBackground}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Border Background="{Binding ElementName=UC2, Path=MainTextBoxForeground}">
-            <TextBlock x:Name="MainTextBox" Foreground="#FF718597"  VerticalAlignment="Center" Padding="10,0" />
+        <Border Background="{Binding ElementName=UC2, Path=MainTextBoxBackground}">
+            <TextBlock x:Name="MainTextBox" Foreground="{Binding ElementName=UC2, Path=MainTextBoxForeground}"  VerticalAlignment="Center" Padding="10,0" />
         </Border>       
-        <Button x:Name="MainButton" Background="{Binding ElementName=UC2, Path=MainTextBoxForeground}"  Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="0,0,0,0" BorderBrush="{Binding ElementName=UC2, Path=MainTextBoxForeground}"  CornerRadius="0" Margin="0">
+        <Button x:Name="MainButton" Background="{Binding ElementName=UC2, Path=MainTextBoxBackground}"  Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="0,0,0,0" BorderBrush="{Binding ElementName=UC2, Path=MainTextBoxForeground}"  CornerRadius="0" Margin="0">
             <Grid>
                 <Path Fill="#FF718597" Data="M 0 0 L 5 5 L 10 0 Z" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </Button>
         <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup" >
             <Border x:Name="PopupBorder">
-                <ScrollViewer  x:Name="PopupScrolViewer" MaxHeight="300" Background="{Binding ElementName=UC2, Path=MainTextBoxForeground}" BorderThickness="1" BorderBrush="{Binding ElementName=UC2, Path=MainTextBoxForeground}">
-                    <ListView  x:Name="PopupListView" ItemsSource="{Binding ElementName=UC2, Path=PopupListViewItemsSource}" ItemTemplate="{Binding ElementName=UC2, Path=PopupListViewItemTemplate}">
-                        <ListView.Resources>
-                            <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" Color="#FF0000" />
-                            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#FF0000" />
-                            <SolidColorBrush x:Key="ListViewItemForegroundSelectedPointerOver" Color="Goldenrod" />
-                            <SolidColorBrush x:Key="SelectedForeground" Color="Goldenrod" />
-                            <SolidColorBrush x:Key="ListViewItemBackgroundPointerOver" Color="#FF0000" />
-                            <SolidColorBrush x:Key="ListViewItemForegroundPointerOver" Color="Goldenrod" />
-                        </ListView.Resources>
+                <ScrollViewer  x:Name="PopupScrolViewer" MaxHeight="300"
+                               Background="{Binding ElementName=UC2, Path=MainTextBoxBackground}"
+                               BorderThickness="1"
+                               BorderBrush="{Binding ElementName=UC2, Path=MainTextBoxForeground}"
+                               >
+                    <ListView  x:Name="PopupListView"
+                               ItemsSource="{Binding ElementName=UC2, Path=PopupListViewItemsSource}"
+                               ItemTemplate="{Binding ElementName=UC2, Path=PopupListViewItemTemplate}">
                     </ListView>
                 </ScrollViewer>
             </Border>
