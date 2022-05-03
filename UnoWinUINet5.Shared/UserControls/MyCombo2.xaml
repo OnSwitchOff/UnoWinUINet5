@@ -9,7 +9,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400"
     x:Name="UC2">
-    <Grid x:Name="MainGrid" BorderThickness="1" Margin="2"
+    <Grid x:Name="MainGrid" BorderThickness="0" Margin="2"
           BorderBrush ="{Binding ElementName=UC2, Path=MainForeground}"
           Background ="{Binding ElementName=UC2, Path=MainBackground}" >
         <Grid.ColumnDefinitions>
