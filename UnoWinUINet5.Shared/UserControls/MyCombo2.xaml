@@ -10,16 +10,16 @@
     d:DesignWidth="400"
     x:Name="UC2">
     <Grid x:Name="MainGrid" BorderThickness="1" Margin="2"
-          BorderBrush ="{Binding ElementName=UC2, Path=MainTextBoxForeground}"
-          Background ="{Binding ElementName=UC2, Path=MainTextBoxBackground}" >
+          BorderBrush ="{Binding ElementName=UC2, Path=MainForeground}"
+          Background ="{Binding ElementName=UC2, Path=MainBackground}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Border Background="{Binding ElementName=UC2, Path=MainTextBoxBackground}">
-            <TextBlock x:Name="MainTextBox" Foreground="{Binding ElementName=UC2, Path=MainTextBoxForeground}"  VerticalAlignment="Center" Padding="10,0" />
+        <Border Background="{Binding ElementName=UC2, Path=MainBackground}">
+            <TextBlock x:Name="MainTextBox" Foreground="{Binding ElementName=UC2, Path=MainForeground}"  VerticalAlignment="Center" Padding="10,0" />
         </Border>       
-        <Button x:Name="MainButton" Background="{Binding ElementName=UC2, Path=MainTextBoxBackground}"  Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="0,0,0,0" BorderBrush="{Binding ElementName=UC2, Path=MainTextBoxForeground}"  CornerRadius="0" Margin="0">
+        <Button x:Name="MainButton" Background="{Binding ElementName=UC2, Path=MainBackground}"  Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="0,0,0,0" BorderBrush="{Binding ElementName=UC2, Path=MainForeground}"  CornerRadius="0" Margin="0">
             <Grid>
                 <Path Fill="#FF718597" Data="M 0 0 L 5 5 L 10 0 Z" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
@@ -27,9 +27,9 @@
         <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup" >
             <Border x:Name="PopupBorder">
                 <ScrollViewer  x:Name="PopupScrolViewer" MaxHeight="300"
-                               Background="{Binding ElementName=UC2, Path=MainTextBoxBackground}"
+                               Background="{Binding ElementName=UC2, Path=MainBackground}"
                                BorderThickness="1"
-                               BorderBrush="{Binding ElementName=UC2, Path=MainTextBoxForeground}"
+                               BorderBrush="{Binding ElementName=UC2, Path=MainForeground}"
                                >
                     <ListView  x:Name="PopupListView"
                                ItemsSource="{Binding ElementName=UC2, Path=PopupListViewItemsSource}"
