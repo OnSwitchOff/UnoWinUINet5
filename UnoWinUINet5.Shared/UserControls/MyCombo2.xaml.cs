@@ -6,10 +6,6 @@ using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.ObjectModel;
 
-
-
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
-
 namespace UnoWinUINet5.UserControls
 {
     public sealed partial class MyCombo2 : UserControl
@@ -127,10 +123,10 @@ namespace UnoWinUINet5.UserControls
 
         #region PopupListView Properties
         public static readonly DependencyProperty PopupListViewItemsSourceProperty = DependencyProperty
-         .Register("PopupListViewItemsSource",
-             typeof(ObservableCollection<Item>),
-             typeof(MyCombo2),
-             new PropertyMetadata(GetDefaultListViewItemsSource()));
+            .Register("PopupListViewItemsSource",
+                typeof(object),
+                typeof(MyCombo2),
+                new PropertyMetadata(GetDefaultListViewItemsSource()));
 
         private static object GetDefaultListViewItemsSource()
         {
@@ -142,10 +138,27 @@ namespace UnoWinUINet5.UserControls
             return source;
         }
 
-        public ObservableCollection<Item> PopupListViewItemsSource
+        public object PopupListViewItemsSource
         {
-            get { return (ObservableCollection<Item>)GetValue(PopupListViewItemsSourceProperty); }
+            get { return GetValue(PopupListViewItemsSourceProperty); }
             set { SetValue(PopupListViewItemsSourceProperty, value); }
+        }
+
+
+        public static readonly DependencyProperty SelectedItemProperty = DependencyProperty
+            .Register("SelectedItem",
+                typeof(object),
+                typeof(MyCombo2),
+                new PropertyMetadata(null));
+
+        public object SelectedItem
+        {
+            get { return GetValue(SelectedItemProperty); }
+            set 
+            {
+                SetValue(SelectedItemProperty, value);
+                MainTextBox.Text = GetSelectedValueString(value);
+            }
         }
 
         public static readonly DependencyProperty PopupListViewItemTemplateProperty = DependencyProperty
@@ -172,6 +185,7 @@ namespace UnoWinUINet5.UserControls
         {
             this.InitializeComponent();
             MainTextBox.PointerPressed += MainTextBox_PointerPressed;
+            MainTextBox.Text = GetSelectedValueString(this.SelectedItem);
         }
 
         private void MainTextBox_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
@@ -181,6 +195,7 @@ namespace UnoWinUINet5.UserControls
 
         private void ShowPopup(object sender, RoutedEventArgs e)
         {
+            var t = this.SelectedItem;
             // open the Popup if it isn't open already 
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
             //PopupScrolViewer.Width = MainGrid.ActualWidth;
@@ -188,12 +203,12 @@ namespace UnoWinUINet5.UserControls
             PopupListView.SelectionChanged += PopupListView_SelectionChanged;
             PopupScrolViewer.Width = MainGrid.ActualWidth - MainGrid.BorderThickness.Left - PopupBorder.BorderThickness.Left - 1;
             StandardPopup.Margin = new Thickness(0, MainGrid.ActualHeight - MainGrid.BorderThickness.Top - PopupBorder.BorderThickness.Top, 0, 0);
-
         }
 
         private void PopupListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MainTextBox.Text = GetSelectedValueString(PopupListView.SelectedValue);
+            //MainTextBox.Text = GetSelectedValueString(PopupListView.SelectedValue);
+            this.SelectedItem = PopupListView.SelectedValue;
             PopupListView.SelectionChanged -= PopupListView_SelectionChanged;
             PopupBorder.PointerExited -= PopupBorder_PointerExited;
             if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
@@ -202,6 +217,8 @@ namespace UnoWinUINet5.UserControls
 
         private string GetSelectedValueString(object selectedValue)
         {
+            if  (selectedValue == null) { return String.Empty; }
+
             Type type = selectedValue.GetType();
 
             if (type == typeof(string))

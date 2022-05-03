@@ -30,6 +30,16 @@ namespace UnoWinUINet5
     {
         public ObservableCollection<Item> source = new ObservableCollection<Item>();
         public ObservableCollection<FontFamily> fonts = new ObservableCollection<FontFamily>();
+        public Item selectedItem;
+        public Item SelectedItem
+        {
+            get => selectedItem;
+            set
+            {
+                selectedItem = value;
+            }
+        }
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -42,6 +52,8 @@ namespace UnoWinUINet5
             {
                 source.Add(new Item() { Text = "Item" + i });
             }
+
+            SelectedItem = source[0];
             // gridgrid.PointerPressed += Gridgrid_PointerPressed;
         }
 

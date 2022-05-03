@@ -32,6 +32,7 @@
                                BorderBrush="{Binding ElementName=UC2, Path=MainForeground}"
                                >
                     <ListView  x:Name="PopupListView"
+                               SelectedItem ="{Binding ElementName=UC2, Path=SelectedItem, Mode=TwoWay}"
                                ItemsSource="{Binding ElementName=UC2, Path=PopupListViewItemsSource}"
                                ItemTemplate="{Binding ElementName=UC2, Path=PopupListViewItemTemplate}">
                     </ListView>
