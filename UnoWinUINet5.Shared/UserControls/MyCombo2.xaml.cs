@@ -157,7 +157,7 @@ namespace UnoWinUINet5.UserControls
             set 
             {
                 SetValue(SelectedItemProperty, value);
-                MainTextBox.Text = GetSelectedValueString(value);
+                //MainTextBox.Text = GetSelectedValueString(value);
             }
         }
 

@@ -17,7 +17,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Border Background="{Binding ElementName=UC2, Path=MainBackground}">
-            <TextBlock x:Name="MainTextBox" Foreground="{Binding ElementName=UC2, Path=MainForeground}"  VerticalAlignment="Center" Padding="10,0" />
+            <TextBlock x:Name="MainTextBox" Foreground="{Binding ElementName=UC2, Path=MainForeground}" Text="{Binding ElementName=UC2, Path=SelectedItem.Text, Mode=TwoWay}"  VerticalAlignment="Center" Padding="10,0" />
         </Border>       
         <Button x:Name="MainButton" Background="{Binding ElementName=UC2, Path=MainBackground}"  Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="0,0,0,0" BorderBrush="{Binding ElementName=UC2, Path=MainForeground}"  CornerRadius="0" Margin="0">
             <Grid>
