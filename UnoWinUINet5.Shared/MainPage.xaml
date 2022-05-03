@@ -16,6 +16,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -30,7 +31,7 @@
 
         <!--<uc:MyComboBox  Grid.Column="3" Height="36"  PopupListViewItemsSource="{x:Bind fonts}" />-->
 
-        <uc:MyCombo2 VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" PopupListViewItemsSource="{x:Bind source}" SelectedItem="{x:Bind SelectedItem, Mode=TwoWay}" >
+        <uc:MyCombo2 VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Height="50" PopupListViewItemsSource="{x:Bind source}" SelectedItem="{x:Bind SelectedItem, Mode=TwoWay}" >
             <!--<uc:MyCombo2.PopupListViewItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -40,12 +41,15 @@
             </uc:MyCombo2.PopupListViewItemTemplate>-->
         </uc:MyCombo2>
 
+        <Button Grid.Column="4" Content="Item0" Click="Item0Clicked" VerticalContentAlignment="Stretch"/>
+
         <TextBox Grid.Column="2" Text="Text" Height="32" />
 
         <Button Grid.Column="1"  Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked" BorderThickness="2" Background="{StaticResource ApplicationPageBackgroundThemeBrush}" CornerRadius="0" BorderBrush="{StaticResource AppBarBorderThemeBrush}" />
         <Popup Grid.Column="1"  x:Name="StandardPopup" >
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                    
                 BorderThickness="2" Width="200" Height="200" x:Name="brdr1">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
                     <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>

@@ -185,7 +185,14 @@ namespace UnoWinUINet5.UserControls
         {
             this.InitializeComponent();
             MainTextBox.PointerPressed += MainTextBox_PointerPressed;
-            MainTextBox.Text = GetSelectedValueString(this.SelectedItem);
+            //MainTextBox.Text = GetSelectedValueString(this.SelectedItem);
+        }
+
+
+
+        private void ClearSelectedItem(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            this.SelectedItem = null;
         }
 
         private void MainTextBox_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
@@ -193,7 +200,7 @@ namespace UnoWinUINet5.UserControls
             //MainTextBox.Visibility = Visibility.Collapsed; 
         }
 
-        private void ShowPopup(object sender, RoutedEventArgs e)
+        private void ShowPopup(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             var t = this.SelectedItem;
             // open the Popup if it isn't open already 
@@ -204,6 +211,7 @@ namespace UnoWinUINet5.UserControls
             PopupScrolViewer.Width = MainGrid.ActualWidth - MainGrid.BorderThickness.Left - PopupBorder.BorderThickness.Left - 1;
             StandardPopup.Margin = new Thickness(0, MainGrid.ActualHeight - MainGrid.BorderThickness.Top - PopupBorder.BorderThickness.Top, 0, 0);
         }
+
 
         private void PopupListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -243,6 +251,26 @@ namespace UnoWinUINet5.UserControls
             PopupListView.SelectionChanged -= PopupListView_SelectionChanged;
             PopupBorder.PointerExited -= PopupBorder_PointerExited;
             if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+        }
+
+        private void ClearBorderPointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            ClearBorder.Background = new SolidColorBrush(Colors.AliceBlue);
+        }
+
+        private void ClearBorderPointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            ClearBorder.Background = new SolidColorBrush(Colors.Transparent);
+        }
+
+        private void ShowBorderPointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            ShowBorder.Background = new SolidColorBrush(Colors.AliceBlue);
+        }
+
+        private void ShowBorderPointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            ShowBorder.Background = new SolidColorBrush(Colors.Transparent);
         }
 
         public class Item

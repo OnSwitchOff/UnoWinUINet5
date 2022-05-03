@@ -13,17 +13,23 @@
           BorderBrush ="{Binding ElementName=UC2, Path=MainForeground}"
           Background ="{Binding ElementName=UC2, Path=MainBackground}" >
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Border Background="{Binding ElementName=UC2, Path=MainBackground}">
+        <Grid>
+            <Border x:Name="ClearBorder"  PointerPressed="ClearSelectedItem" Background="Transparent" PointerEntered="ClearBorderPointerEntered" PointerExited="ClearBorderPointerExited">
+                <Path Fill="#FF718597" x:Name="ClearPath"  Data="M 1 0 L 5 4 L 9 0 L 10 1 L 6 5 L 10 9 L 9 10 L 5 6 L 1 10 L 0 9 L 4 5 L 0 1 Z" VerticalAlignment="Center" Margin ="5,2" />
+            </Border>
+        </Grid>
+        <Border Grid.Column="1"  Background="{Binding ElementName=UC2, Path=MainBackground}">
             <TextBlock x:Name="MainTextBox" Foreground="{Binding ElementName=UC2, Path=MainForeground}" Text="{Binding ElementName=UC2, Path=SelectedItem.Text, Mode=TwoWay}"  VerticalAlignment="Center" Padding="10,0" />
-        </Border>       
-        <Button x:Name="MainButton" Background="{Binding ElementName=UC2, Path=MainBackground}"  Grid.Column="1" Click="ShowPopup" VerticalAlignment="Stretch" BorderThickness="0,0,0,0" BorderBrush="{Binding ElementName=UC2, Path=MainForeground}"  CornerRadius="0" Margin="0">
-            <Grid>
-                <Path Fill="#FF718597" Data="M 0 0 L 5 5 L 10 0 Z" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Grid>
-        </Button>
+        </Border>
+        <Grid Grid.Column="2">
+            <Border x:Name="ShowBorder"  PointerPressed="ShowPopup" Background="Transparent" PointerEntered="ShowBorderPointerEntered" PointerExited="ShowBorderPointerExited">
+                <Path Fill="#FF718597" x:Name="ShowPath"  Data="M 0 0 L 5 5 L 10 0 Z" VerticalAlignment="Center" Margin ="5,2" />
+            </Border>
+        </Grid>
         <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup" >
             <Border x:Name="PopupBorder">
                 <ScrollViewer  x:Name="PopupScrolViewer" MaxHeight="300"
@@ -32,7 +38,7 @@
                                BorderBrush="{Binding ElementName=UC2, Path=MainForeground}"
                                >
                     <ListView  x:Name="PopupListView"
-                               SelectedItem ="{Binding ElementName=UC2, Path=SelectedItem, Mode=TwoWay}"
+                               SelectedItem ="{Binding ElementName=UC2, Path=SelectedItem}"
                                ItemsSource="{Binding ElementName=UC2, Path=PopupListViewItemsSource}"
                                ItemTemplate="{Binding ElementName=UC2, Path=PopupListViewItemTemplate}">
                     </ListView>

@@ -106,6 +106,12 @@ namespace UnoWinUINet5
            
         }
 
+        private void Item0Clicked(object sender, RoutedEventArgs e)
+        {
+            SelectedItem = null;
+
+        }
+
         private void Brdr1_PointerExited(object sender, PointerRoutedEventArgs e)
         {
             brdr1.PointerExited -= Brdr1_PointerExited;
