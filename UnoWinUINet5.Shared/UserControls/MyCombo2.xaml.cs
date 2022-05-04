@@ -188,8 +188,10 @@ namespace UnoWinUINet5.UserControls
             //MainTextBox.Text = GetSelectedValueString(this.SelectedItem);
         }
 
-
-
+        private void MainBorderClick(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            MainTextBox.Visibility = MainTextBox.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+        }
         private void ClearSelectedItem(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             this.SelectedItem = null;
