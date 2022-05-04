@@ -192,6 +192,14 @@ namespace UnoWinUINet5.UserControls
         {
             MainBorder.Visibility = Visibility.Collapsed;
             UnderBorder.Visibility = Visibility.Visible;
+            UnderTextBox.LostFocus += UnderTextBox_LostFocus;
+        }
+
+        private void UnderTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            MainBorder.Visibility = Visibility.Visible;
+            UnderBorder.Visibility = Visibility.Collapsed;
+            UnderTextBox.LostFocus -= UnderTextBox_LostFocus;
         }
 
         private void UnderBorderClick(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
