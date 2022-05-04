@@ -10,6 +10,16 @@ namespace UnoWinUINet5.UserControls
 {
     public sealed partial class MyCombo2 : UserControl
     {
+        public static readonly DependencyProperty MainFontSizeProperty = DependencyProperty
+           .Register("MainFontSize",
+               typeof(Double),
+               typeof(MyCombo2),
+               new PropertyMetadata(14));
+        public double MainFontSize
+        {
+            get { return (double)GetValue(MainFontSizeProperty); }
+            set { SetValue(MainFontSizeProperty, value); }
+        }
 
         public static readonly DependencyProperty MainTextBoxPaddingProperty = DependencyProperty
             .Register("MainTextBoxPadding",
@@ -20,7 +30,15 @@ namespace UnoWinUINet5.UserControls
         public Thickness MainTextBoxPadding
         {
             get { return (Thickness)GetValue(MainTextBoxPaddingProperty); }
-            set { SetValue(MainTextBoxPaddingProperty, value); }
+            set 
+            { 
+                SetValue(MainTextBoxPaddingProperty, value);
+#if WINDOWS
+                UnderTextBox.Padding = this.MainTextBoxPadding;
+#else
+             UnderTextBox.Padding = new Thickness(this.MainTextBoxPadding.Left, this.MainTextBoxPadding.Top + 2, this.MainTextBoxPadding.Right, this.MainTextBoxPadding.Bottom);
+#endif
+            }
         }
 
         public static readonly DependencyProperty IsEditableTextProperty = DependencyProperty
@@ -221,11 +239,7 @@ namespace UnoWinUINet5.UserControls
         {
             this.InitializeComponent();
 
-#if WINDOWS
-            UnderTextBox.Padding = this.MainTextBoxPadding;
-#else
-             UnderTextBox.Padding = new Thickness(this.MainTextBoxPadding.Left, this.MainTextBoxPadding.Top + 2, this.MainTextBoxPadding.Right, this.MainTextBoxPadding.Bottom);
-#endif
+
 
             //MainTextBox.PointerPressed += MainTextBox_PointerPressed;
             //MainTextBox.Text = GetSelectedValueString(this.SelectedItem);
