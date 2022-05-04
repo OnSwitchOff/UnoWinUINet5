@@ -13,10 +13,12 @@
   <ItemGroup>
     <_Globbed_Compile Remove="UserControls\MyCombo2.xaml.cs" />
     <_Globbed_Compile Remove="UserControls\MyComboBox.xaml.cs" />
+    <_Globbed_Compile Remove="UserControls\MyNavigationView.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <_Globbled_Page Remove="Resources\MyResourceDictionary.xaml" />
     <_Globbled_Page Remove="UserControls\MyCombo2.xaml" />
     <_Globbled_Page Remove="UserControls\MyComboBox.xaml" />
+    <_Globbled_Page Remove="UserControls\MyNavigationView.xaml" />
   </ItemGroup>
 </Project>

@@ -39,7 +39,7 @@
         </Grid>
         <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup" >
             <Border x:Name="PopupBorder">
-                <ScrollViewer  x:Name="PopupScrolViewer" MaxHeight="300"
+                <ScrollViewer  x:Name="PopupScrolViewer" MaxHeight="140"
                                Background="{Binding ElementName=UC2, Path=MainBackground}"
                                BorderThickness="1"
                                BorderBrush="{Binding ElementName=UC2, Path=MainForeground}"
