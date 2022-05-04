@@ -234,8 +234,6 @@ namespace UnoWinUINet5.UserControls
         private void UnderTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             UnderTextBox.SelectAll();
-            UnderTextBox.LostFocus += UnderTextBox_LostFocus;
-            UnderTextBox.KeyUp += UnderTextBox_KeyUp;
         }
 
         private void UnderTextBox_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
@@ -269,8 +267,6 @@ namespace UnoWinUINet5.UserControls
         {
             MainBorder.Visibility = Visibility.Visible;
             UnderBorder.Visibility = Visibility.Collapsed;
-            UnderTextBox.LostFocus -= UnderTextBox_LostFocus;
-            UnderTextBox.KeyUp -= UnderTextBox_KeyUp;
         }
 
         private void UnderBorderClick(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
