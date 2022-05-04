@@ -29,7 +29,7 @@
             <TextBlock x:Name="MainTextBox" Foreground="{Binding ElementName=UC2, Path=MainForeground}" Text="{Binding ElementName=UC2, Path=SelectedItem.Text, Mode=OneWay}"  VerticalAlignment="Center" Padding="10,0" />
         </Border>
         <Border x:Name="UnderBorder" Visibility="Collapsed" PointerPressed="UnderBorderClick" Grid.Column="1"  Background="{Binding ElementName=UC2, Path=MainBackground}">
-            <TextBox x:Name="UnderTextBox" GotFocus="UnderTextBox_GotFocus" Foreground="{Binding ElementName=UC2, Path=MainForeground}" Text="{Binding ElementName=UC2, Path=SelectedItem.Text, Mode=OneWay}"   Padding="10,6" />
+            <TextBox x:Name="UnderTextBox" GotFocus="UnderTextBox_GotFocus" Foreground="{Binding ElementName=UC2, Path=MainForeground}" Text="{Binding ElementName=UC2, Path=SelectedItem.Text, Mode=OneWay}" />
         </Border>
         <!--ShowPopup button-->
         <Grid Grid.Column="2">
