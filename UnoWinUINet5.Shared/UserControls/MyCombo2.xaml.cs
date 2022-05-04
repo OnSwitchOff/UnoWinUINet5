@@ -190,7 +190,14 @@ namespace UnoWinUINet5.UserControls
 
         private void MainBorderClick(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
-            MainTextBox.Visibility = MainTextBox.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+            MainBorder.Visibility = Visibility.Collapsed;
+            UnderBorder.Visibility = Visibility.Visible;
+        }
+
+        private void UnderBorderClick(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            MainBorder.Visibility = Visibility.Visible;
+            UnderBorder.Visibility =  Visibility.Collapsed;
         }
         private void ClearSelectedItem(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
