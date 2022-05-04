@@ -14,7 +14,7 @@ namespace UnoWinUINet5.UserControls
         public static readonly DependencyProperty MainTextBoxPaddingProperty = DependencyProperty
             .Register("MainTextBoxPadding",
                 typeof(Thickness),
-                typeof(MyComboBox),
+                typeof(MyCombo2),
                 new PropertyMetadata(new Thickness(10, 6, 10, 6)));
 
         public Thickness MainTextBoxPadding
