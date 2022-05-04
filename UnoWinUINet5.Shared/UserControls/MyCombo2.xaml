@@ -20,7 +20,7 @@
         
         <!--Clear button-->
         <Grid>
-            <Border  x:Name="ClearBorder" Visibility="Collapsed"  PointerPressed="ClearSelectedItem" Background="Transparent" PointerEntered="ClearBorderPointerEntered" PointerExited="ClearBorderPointerExited">
+            <Border  x:Name="ClearBorder" Visibility="{Binding ElementName=UC2, Path=IsExistClearBtn}"  PointerPressed="ClearSelectedItem" Background="Transparent" PointerEntered="ClearBorderPointerEntered" PointerExited="ClearBorderPointerExited">
                 <Path Fill="#FF718597" x:Name="ClearPath"  Data="M 1 0 L 5 4 L 9 0 L 10 1 L 6 5 L 10 9 L 9 10 L 5 6 L 1 10 L 0 9 L 4 5 L 0 1 Z" VerticalAlignment="Center" Margin ="5,2" />
             </Border>
         </Grid>
