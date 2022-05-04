@@ -11,6 +11,42 @@ namespace UnoWinUINet5.UserControls
     public sealed partial class MyCombo2 : UserControl
     {
 
+        public static readonly DependencyProperty MainTextBoxPaddingProperty = DependencyProperty
+            .Register("MainTextBoxPadding",
+                typeof(Thickness),
+                typeof(MyComboBox),
+                new PropertyMetadata(new Thickness(10, 6, 10, 6)));
+
+        public Thickness MainTextBoxPadding
+        {
+            get { return (Thickness)GetValue(MainTextBoxPaddingProperty); }
+            set { SetValue(MainTextBoxPaddingProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsEditableTextProperty = DependencyProperty
+           .Register("IsEditableText",
+               typeof(bool),
+               typeof(MyCombo2),
+               new PropertyMetadata(false));
+
+        public bool IsEditableText
+        {
+            get { return (bool)GetValue(IsEditableTextProperty); }
+            set { SetValue(IsEditableTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsExistClearBtnProperty = DependencyProperty
+           .Register("IsExistClearBtn",
+               typeof(bool),
+               typeof(MyCombo2),
+               new PropertyMetadata(false));
+
+        public bool IsExistClearBtn
+        {
+            get { return (bool)GetValue(IsExistClearBtnProperty); }
+            set { SetValue(IsExistClearBtnProperty, value); }
+        }
+
         #region Main DependecyProperties
         public static readonly DependencyProperty MainForegroundProperty = DependencyProperty
            .Register("MainForeground",
@@ -184,15 +220,49 @@ namespace UnoWinUINet5.UserControls
         public MyCombo2()
         {
             this.InitializeComponent();
-            MainTextBox.PointerPressed += MainTextBox_PointerPressed;
+
+#if WINDOWS
+            UnderTextBox.Padding = this.MainTextBoxPadding;
+#else
+             UnderTextBox.Padding = new Thickness(this.MainTextBoxPadding.Left, this.MainTextBoxPadding.Top + 2, this.MainTextBoxPadding.Right, this.MainTextBoxPadding.Bottom);
+#endif
+
+            //MainTextBox.PointerPressed += MainTextBox_PointerPressed;
             //MainTextBox.Text = GetSelectedValueString(this.SelectedItem);
+        }
+
+        private void UnderTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UnderTextBox.SelectAll();
+            UnderTextBox.LostFocus += UnderTextBox_LostFocus;
+            UnderTextBox.KeyUp += UnderTextBox_KeyUp;
+        }
+
+        private void UnderTextBox_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+
+                (this.PopupListViewItemsSource as ObservableCollection<Item>).Add(new Item() { Text = UnderTextBox.Text });
+                this.SelectedItem = (this.PopupListViewItemsSource as ObservableCollection<Item>)[(this.PopupListViewItemsSource as ObservableCollection<Item>).Count-1];
+                UnderTextBox_LostFocus(null, new RoutedEventArgs());
+
+            }
         }
 
         private void MainBorderClick(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
-            MainBorder.Visibility = Visibility.Collapsed;
-            UnderBorder.Visibility = Visibility.Visible;
-            UnderTextBox.LostFocus += UnderTextBox_LostFocus;
+            if (IsEditableText)
+            {
+                MainBorder.Visibility = Visibility.Collapsed;
+                UnderBorder.Visibility = Visibility.Visible;
+                //UnderTextBox.LostFocus += UnderTextBox_LostFocus;
+                UnderTextBox.Focus(FocusState.Programmatic);
+            } 
+            else
+            {
+                ShowPopup(sender,e);
+            }
         }
 
         private void UnderTextBox_LostFocus(object sender, RoutedEventArgs e)
@@ -200,6 +270,7 @@ namespace UnoWinUINet5.UserControls
             MainBorder.Visibility = Visibility.Visible;
             UnderBorder.Visibility = Visibility.Collapsed;
             UnderTextBox.LostFocus -= UnderTextBox_LostFocus;
+            UnderTextBox.KeyUp -= UnderTextBox_KeyUp;
         }
 
         private void UnderBorderClick(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
@@ -210,7 +281,7 @@ namespace UnoWinUINet5.UserControls
         private void ClearSelectedItem(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             this.SelectedItem = null;
-        }
+        }      
 
         private void MainTextBox_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
@@ -219,7 +290,7 @@ namespace UnoWinUINet5.UserControls
 
         private void ShowPopup(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
-            ClearBorder.Visibility = ClearBorder.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+            //ClearBorder.Visibility = ClearBorder.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
             var t = this.SelectedItem;
             // open the Popup if it isn't open already 
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
@@ -290,6 +361,7 @@ namespace UnoWinUINet5.UserControls
         {
             ShowBorder.Background = new SolidColorBrush(Colors.Transparent);
         }
+
 
         public class Item
         {

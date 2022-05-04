@@ -17,17 +17,21 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
+        
+        <!--Clear button-->
         <Grid>
-            <Border  x:Name="ClearBorder"  PointerPressed="ClearSelectedItem" Background="Transparent" PointerEntered="ClearBorderPointerEntered" PointerExited="ClearBorderPointerExited">
+            <Border  x:Name="ClearBorder" Visibility="Collapsed"  PointerPressed="ClearSelectedItem" Background="Transparent" PointerEntered="ClearBorderPointerEntered" PointerExited="ClearBorderPointerExited">
                 <Path Fill="#FF718597" x:Name="ClearPath"  Data="M 1 0 L 5 4 L 9 0 L 10 1 L 6 5 L 10 9 L 9 10 L 5 6 L 1 10 L 0 9 L 4 5 L 0 1 Z" VerticalAlignment="Center" Margin ="5,2" />
             </Border>
         </Grid>
+        <!--Main panel-->
         <Border x:Name="MainBorder" PointerPressed="MainBorderClick" Grid.Column="1"  Background="{Binding ElementName=UC2, Path=MainBackground}">
             <TextBlock x:Name="MainTextBox" Foreground="{Binding ElementName=UC2, Path=MainForeground}" Text="{Binding ElementName=UC2, Path=SelectedItem.Text, Mode=OneWay}"  VerticalAlignment="Center" Padding="10,0" />
         </Border>
         <Border x:Name="UnderBorder" Visibility="Collapsed" PointerPressed="UnderBorderClick" Grid.Column="1"  Background="{Binding ElementName=UC2, Path=MainBackground}">
-            <TextBox x:Name="UnderTextBox" Foreground="{Binding ElementName=UC2, Path=MainForeground}" Text="{Binding ElementName=UC2, Path=SelectedItem.Text, Mode=OneWay}"    />
+            <TextBox x:Name="UnderTextBox" GotFocus="UnderTextBox_GotFocus" Foreground="{Binding ElementName=UC2, Path=MainForeground}" Text="{Binding ElementName=UC2, Path=SelectedItem.Text, Mode=OneWay}"   Padding="10,6" />
         </Border>
+        <!--ShowPopup button-->
         <Grid Grid.Column="2">
             <Border x:Name="ShowBorder"  PointerPressed="ShowPopup" Background="Transparent" PointerEntered="ShowBorderPointerEntered" PointerExited="ShowBorderPointerExited">
                 <Path Fill="#FF718597" x:Name="ShowPath"  Data="M 0 0 L 5 5 L 10 0 Z" VerticalAlignment="Center" Margin ="5,2" />
