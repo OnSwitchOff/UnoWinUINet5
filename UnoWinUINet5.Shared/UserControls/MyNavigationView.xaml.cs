@@ -50,7 +50,7 @@ namespace UnoWinUINet5.UserControls
         }
 
         public static readonly DependencyProperty DocumentsSourceProperty = DependencyProperty
-            .Register("MainItemsSourceProperty",
+            .Register("DocumentsSourceProperty",
                 typeof(ObservableCollection<MyNavigationViewItem>),
                 typeof(MyNavigationView),
                 new PropertyMetadata(GetDefaultDocumentsSource()));
