@@ -54,15 +54,41 @@
         </uc:MyCombo2>
 
         <Grid Grid.Column="5" Grid.RowSpan="3" x:Name="MainGrid" BorderThickness="1" Margin="0" Padding="0" BorderBrush="Black" Background="DarkSlateBlue">
+           
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
-            <Border x:Name="MainBorder"  Margin="0" Padding="0">
 
-                <ListView  x:Name="MainListView" ItemsSource="{x:Bind fonts}" Background="red">
+            <ListView  x:Name="MainListView" ItemsSource="{x:Bind fonts}" ItemContainerStyle="{StaticResource NavigationMainListViewItemContainerStyle}" Background="red">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border BorderThickness="1" BorderBrush="Black" Width="30" Height="30">
+                                <Image Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Column="1" Visibility="Collapsed">
+                                <TextBlock Text="MainItem" VerticalAlignment="Center" Padding="10,0"/>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <ScrollViewer Grid.Row="1" x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <ListView  x:Name="DocumentsListView" ItemsSource="{x:Bind source}">
+                    <ListView.Resources>
+                        <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="#FF00FF" />
+                        <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#FFFF00" />
+                        <SolidColorBrush x:Key="SystemControlHighlightAltBaseHighBrush" Color="#00FFFF" />
+                    </ListView.Resources>
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -75,48 +101,20 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="1" BorderBrush="Black" Width="30" Height="30">
+                                <Border  BorderThickness="1" BorderBrush="Black" Width="30" Height="30">
                                     <Image Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Border>
-                                <Border Grid.Column="1" Visibility="Visible">
-                                    <TextBlock Text="MainItem" VerticalAlignment="Center" Padding="10,0"/>
+                                <Border  Grid.Column="1" Visibility="Collapsed">
+                                    <TextBlock Text="SecondaryItem" VerticalAlignment="Center" Padding="10,0"/>
                                 </Border>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </Border>
-            <Border Grid.Row="1" x:Name="DocumentsBorder"  Margin="0" Padding="0">
-                <ScrollViewer  x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                    <ListView  x:Name="DocumentsListView" ItemsSource="{x:Bind source}">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                                <Setter Property="Padding" Value="12,0" />
-                                <Setter Property="MinWidth" Value="40" />
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Border  BorderThickness="1" BorderBrush="Black" Width="30" Height="30">
-                                        <Image Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border  Grid.Column="1" Visibility="Visible">
-                                        <TextBlock Text="SecondaryItem" VerticalAlignment="Center" Padding="10,0"/>
-                                    </Border>
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
                 </ScrollViewer>
-            </Border>
+     
             <Border Grid.Row="3" x:Name="HideBorder" Background="Red" Margin="0" Padding="0" >
                 <Path HorizontalAlignment="Right" Fill="#FF718597" x:Name="HidePath"  Data="M 0 0 L 5 5 L 0 10 Z" VerticalAlignment="Center" Margin ="5" >
                     <Path.RenderTransform>
