@@ -18,6 +18,7 @@ using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI;
 using static UnoWinUINet5.UserControls.MyCombo2;
 using System.ComponentModel;
+using System.Diagnostics;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -57,6 +58,19 @@ namespace UnoWinUINet5
 
             this.Loaded += MainPage_Loaded;
             // gridgrid.PointerPressed += Gridgrid_PointerPressed;
+
+        }
+
+        private void DocBorder_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            DocBorder.Focus(FocusState.Programmatic);
+            Debug.WriteLine("DocBorder_PointerEntered");
+        }
+
+        private void MainBorder_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            MainBorder.Focus(FocusState.Programmatic);
+            Debug.WriteLine("MainBorder_PointerEntered");
         }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
