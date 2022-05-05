@@ -34,5 +34,6 @@
         <Setter Property="AllowDrop" Value="False"/>
         <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}"/>
         <Setter Property="FocusVisualMargin" Value="0"/>
+
     </Style>
 </ResourceDictionary>

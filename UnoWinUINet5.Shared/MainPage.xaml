@@ -33,7 +33,19 @@
 
         <!--<uc:MyComboBox  Grid.Column="3" Height="36"  PopupListViewItemsSource="{x:Bind fonts}" />-->
 
+        
+        
         <uc:MyCombo2 VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Height="38" PopupListViewItemsSource="{x:Bind source}" SelectedItem="{x:Bind SelectedItem, Mode=TwoWay}" >
+            <!--<uc:MyCombo2.PopupListViewItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock Grid.Column="2" Text="{Binding Path=Text, Mode=TwoWay}" FontFamily="Arial" Foreground="White"  FontWeight="Bold"/>
+                    </Grid>
+                </DataTemplate>
+            </uc:MyCombo2.PopupListViewItemTemplate>-->
+        </uc:MyCombo2>
+
+        <uc:MyCombo2 VerticalAlignment="Center" Grid.Row="0" Grid.Column="3" Height="38" PopupListViewItemsSource="{x:Bind source}" SelectedItem="{x:Bind SelectedItem, Mode=TwoWay}" >
             <!--<uc:MyCombo2.PopupListViewItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -157,7 +169,7 @@
         </Grid>
 
 
-        <Button  Grid.Column="4" Content="Item0" Click="Item0Clicked" VerticalContentAlignment="Stretch"/>
+        <!--<Button  Grid.Column="4" Content="Item0" Click="Item0Clicked" VerticalContentAlignment="Stretch"/>-->
 
         <TextBox Grid.Column="2" Text="Text" Height="32" />
 
