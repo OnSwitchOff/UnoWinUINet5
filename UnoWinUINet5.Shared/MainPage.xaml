@@ -18,6 +18,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -45,15 +47,8 @@
             </uc:MyCombo2.PopupListViewItemTemplate>-->
         </uc:MyCombo2>
 
-        <uc:MyCombo2 VerticalAlignment="Center" Grid.Row="0" Grid.Column="3" Height="38" PopupListViewItemsSource="{x:Bind source}" SelectedItem="{x:Bind SelectedItem, Mode=TwoWay}" >
-            <!--<uc:MyCombo2.PopupListViewItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <TextBlock Grid.Column="2" Text="{Binding Path=Text, Mode=TwoWay}" FontFamily="Arial" Foreground="White"  FontWeight="Bold"/>
-                    </Grid>
-                </DataTemplate>
-            </uc:MyCombo2.PopupListViewItemTemplate>-->
-        </uc:MyCombo2>
+        <uc:MyCombo2 VerticalAlignment="Center" Grid.Row="0" Grid.Column="3" Height="38" PopupListViewItemsSource="{x:Bind source}" SelectedItem="{x:Bind SelectedItem, Mode=TwoWay}" />
+
 
         <uc:MyCombo2 VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" IsEditableText="True" MainFontSize="10" MainTextBoxPadding="10,10" IsExistClearBtn="True" Height="38" PopupListViewItemsSource="{x:Bind source}" SelectedItem="{x:Bind SelectedItem, Mode=TwoWay}" >
             <!--<uc:MyCombo2.PopupListViewItemTemplate>
@@ -64,6 +59,9 @@
                 </DataTemplate>
             </uc:MyCombo2.PopupListViewItemTemplate>-->
         </uc:MyCombo2>
+
+
+        <uc:MyNavigationView Grid.Column="7" Grid.RowSpan="3"/>
 
         <Grid Grid.Column="5" Grid.RowSpan="3" x:Name="MainGrid" BorderThickness="1" Margin="0" Padding="0" BorderBrush="Black" Background="DarkSlateBlue">
            
@@ -94,18 +92,13 @@
             </Grid>-->
             <Border x:Name="MainBorder" PointerEntered="MainBorder_PointerEntered">
                 <ListView  x:Name="MainListView" ItemsSource="{x:Bind fonts}"  Background="red">
-                    <ListView.Resources>
-                        <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="#FF00FF" />
-                        <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#FFFF00" />
-                        <SolidColorBrush x:Key="SystemControlHighlightAltBaseHighBrush" Color="#00FFFF" />
-                    </ListView.Resources>
-                    <ListView.ItemContainerStyle>
+                    <!--<ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Left"/>
                             <Setter Property="Padding" Value="12,0" />
-                            <Setter Property="MinWidth" Value="40" />
+                            <Setter Property="MinWidth" Value="65" />
                         </Style>
-                    </ListView.ItemContainerStyle>
+                    </ListView.ItemContainerStyle>-->
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -128,18 +121,18 @@
             <Border x:Name="DocBorder" Grid.Row="1" PointerEntered="DocBorder_PointerEntered">
                 <ScrollViewer  x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                     <ListView  x:Name="DocumentsListView" ItemsSource="{x:Bind source}">
-                        <ListView.Resources>
+                        <!--<ListView.Resources>
                             <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="#FF00FF" />
                             <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#FFFF00" />
                             <SolidColorBrush x:Key="SystemControlHighlightAltBaseHighBrush" Color="#00FFFF" />
-                        </ListView.Resources>
-                        <ListView.ItemContainerStyle>
+                        </ListView.Resources>-->
+                        <!--<ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Left"/>
                                 <Setter Property="Padding" Value="12,0" />
                                 <Setter Property="MinWidth" Value="40" />
                             </Style>
-                        </ListView.ItemContainerStyle>
+                        </ListView.ItemContainerStyle>-->
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
