@@ -60,9 +60,28 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
+        
 
 
-            <ListView  x:Name="MainListView" ItemsSource="{x:Bind fonts}" ItemContainerStyle="{StaticResource NavigationMainListViewItemContainerStyle}" Background="red">
+
+            <Grid Background="Red">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border  BorderThickness="1" BorderBrush="Black" Width="30" Height="30" Margin="10">
+                    <Button Content="1"/>
+                </Border>
+                <Border Grid.Row="1" BorderThickness="1" BorderBrush="Black" Width="30" Height="30" Margin="10">
+                    <Button Content="2"/>
+                </Border>
+                <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black" Width="30" Height="30" Margin="10">
+                    <Button Content="3"/>
+                </Border>
+            </Grid>
+            
+            <!--<ListView  x:Name="MainListView" ItemsSource="{x:Bind fonts}" ItemContainerStyle="{StaticResource NavigationMainListViewItemContainerStyle}" Background="red">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -79,7 +98,7 @@
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
 
 
             <ScrollViewer Grid.Row="1" x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
