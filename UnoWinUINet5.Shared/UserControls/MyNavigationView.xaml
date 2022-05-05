@@ -83,7 +83,7 @@
         <Border Grid.Row="3" x:Name="HideBorder" Background="Red" Margin="0" Padding="0" PointerEntered="HideBorder_PointerEntered" PointerReleased="HideBorder_PointerReleased" >
             <Path HorizontalAlignment="Right" Fill="#FF718597" x:Name="HidePath"  Data="M 0 0 L 5 5 L 0 10 Z" VerticalAlignment="Center" Margin ="5" >
                 <Path.RenderTransform>
-                    <RotateTransform Angle="180" CenterX="2" CenterY="5"/>
+                    <RotateTransform x:Name="HidePathRotateTransform" Angle="180" CenterX="2" CenterY="5"/>
                 </Path.RenderTransform>
             </Path>
         </Border>

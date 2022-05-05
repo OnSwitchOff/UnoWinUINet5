@@ -79,6 +79,9 @@ namespace UnoWinUINet5.UserControls
         private void HideBorder_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
             IsCollapsed = !IsCollapsed;
+
+            HidePathRotateTransform.Angle = this.IsCollapsed ? 0 : 180;
+
             foreach (MyNavigationViewItem item in MainItemsSource)
             {
                 item.TitleVisibility = this.IsCollapsed ? Visibility.Collapsed : Visibility.Visible;
