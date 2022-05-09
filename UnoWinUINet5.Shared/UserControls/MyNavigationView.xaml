@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <Border x:Name="MainBorder" PointerEntered="MainBorder_PointerEntered">
-            <ListView  x:Name="MainListView" ItemsSource="{Binding ElementName=UC, Path=MainItemsSource}"  Background="red">
+            <ListView  x:Name="MainListView" ItemsSource="{Binding ElementName=UC, Path=MainItemsSource}" SelectedItem="{Binding ElementName=UC, Path=MainSelectedItem, Mode=TwoWay}"  Background="red">
                 <!--<ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -35,7 +35,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Border BorderThickness="1" BorderBrush="Black" Width="30" Height="30">
-                                <Image Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <Image Width="20"  Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
                             <Border Grid.Column="1" Visibility="{Binding Path=TitleVisibility, Mode=TwoWay}">
                                 <TextBlock Text="{Binding Path=Title,Mode=TwoWay}" VerticalAlignment="Center" Padding="10,0"/>
@@ -47,8 +47,8 @@
         </Border>
 
         <Border x:Name="DocBorder" Grid.Row="1" PointerEntered="DocBorder_PointerEntered">
-            <ScrollViewer  x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                <ListView  x:Name="DocumentsListView" ItemsSource="{Binding ElementName=UC, Path=DocumentsSource}">
+
+                <ListView  x:Name="DocumentsListView" ItemsSource="{Binding ElementName=UC, Path=DocumentsSource}" SelectedItem="{Binding ElementName=UC, Path=DocumentsSelectedItem, Mode=TwoWay}" >
                     <!--<ListView.Resources>
                             <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="#FF00FF" />
                             <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#FFFF00" />
@@ -78,7 +78,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </ScrollViewer>
+
         </Border>
         <Border Grid.Row="3" x:Name="HideBorder" Background="Red" Margin="0" Padding="0" PointerEntered="HideBorder_PointerEntered" PointerReleased="HideBorder_PointerReleased" >
             <Path HorizontalAlignment="Right" Fill="#FF718597" x:Name="HidePath"  Data="M 0 0 L 5 5 L 0 10 Z" VerticalAlignment="Center" Margin ="5" >
