@@ -128,6 +128,8 @@ namespace UnoWinUINet5.UserControls
                 DocumentsListScrollViewer.ScrollToVerticalOffset(double.MaxValue);
             }
 
+
+            MainFrame.Content = new TextBlock() { Text = ((MyNavigationViewItem)DocumentsListView.SelectedItem).Title };
             //if (DocumentsSelectedItem != null && DocumentsSource.IndexOf(DocumentsSelectedItem) == DocumentsSource.Count - 1)
             //{
             //    // DocumentsListView.ScrollIntoView(DocumentsSelectedItem,ScrollIntoViewAlignment.Default);

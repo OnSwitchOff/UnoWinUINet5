@@ -61,7 +61,6 @@
         </uc:MyCombo2>
 
 
-        <uc:MyNavigationView Grid.Column="7"  Grid.RowSpan="3"/>
 
         <Grid Grid.Column="5" Grid.RowSpan="3" x:Name="MainGrid" BorderThickness="1" Margin="0" Padding="0" BorderBrush="Black" Background="DarkSlateBlue">
            
@@ -236,5 +235,8 @@
                 </Border>
             </Popup>
         </Grid>
+
+
+        <uc:MyNavigationView Grid.ColumnSpan="8"  Grid.RowSpan="3"/>
     </Grid>
 </Page>

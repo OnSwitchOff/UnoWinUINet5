@@ -18,6 +18,11 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
         <!--<Border x:Name="MainBorder" PointerEntered="MainBorder_PointerEntered">
             <ListView  x:Name="MainListView" ItemsSource="{Binding ElementName=UC, Path=MainItemsSource}" SelectedItem="{Binding ElementName=UC, Path=MainSelectedItem, Mode=TwoWay}"  Background="red">
                 --><!--<ListView.ItemContainerStyle>
@@ -46,7 +51,7 @@
             </ListView>
         </Border>-->
 
-        <Border x:Name="DocBorder" Grid.Row="1" >
+        <Border x:Name="DocBorder" Grid.Row="1" Background="SeaShell" >
             <ScrollViewer  x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" PointerEntered="DocBorder_PointerEntered" >
                 <ListView  x:Name="DocumentsListView" ItemsSource="{Binding ElementName=UC, Path=DocumentsSource}" SelectedItem="{Binding ElementName=UC, Path=DocumentsSelectedItem, Mode=TwoWay}" >
                     <!--<ListView.Resources>
@@ -87,6 +92,8 @@
                 </Path.RenderTransform>
             </Path>
         </Border>
+
+        <Frame x:Name="MainFrame" Grid.Column="1" Grid.RowSpan="3" Background="AliceBlue" BorderThickness="1,0" BorderBrush="Black"/>
     </Grid>
 
 </UserControl>
