@@ -125,7 +125,7 @@ namespace UnoWinUINet5.UserControls
             {
                 DocumentsSource.Add(new MyNavigationViewItem() { Title = "New Prodajba" + DocumentsSource.Count });
                 DocumentsListView.SelectedItem = DocumentsSource[DocumentsSource.Count - 1];
-                DocumentsListScrollViewer.ScrollToVerticalOffset(double.MaxValue);
+                //DocumentsListScrollViewer.ScrollToVerticalOffset(double.MaxValue);
             }
 
 
