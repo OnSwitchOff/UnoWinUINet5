@@ -18,15 +18,15 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <Border x:Name="MainBorder" PointerEntered="MainBorder_PointerEntered">
+        <!--<Border x:Name="MainBorder" PointerEntered="MainBorder_PointerEntered">
             <ListView  x:Name="MainListView" ItemsSource="{Binding ElementName=UC, Path=MainItemsSource}" SelectedItem="{Binding ElementName=UC, Path=MainSelectedItem, Mode=TwoWay}"  Background="red">
-                <!--<ListView.ItemContainerStyle>
+                --><!--<ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Left"/>
                             <Setter Property="Padding" Value="12,0" />
                             <Setter Property="MinWidth" Value="65" />
                         </Style>
-                    </ListView.ItemContainerStyle>-->
+                    </ListView.ItemContainerStyle>--><!--
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -44,10 +44,10 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </Border>
+        </Border>-->
 
         <Border x:Name="DocBorder" Grid.Row="1" >
-            <ScrollViewer  x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" PointerEntered="DocBorder_PointerEntered" PointerExited="DocumentsListScrollViewer_PointerExited">
+            <ScrollViewer  x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" PointerEntered="DocBorder_PointerEntered" >
                 <ListView  x:Name="DocumentsListView" ItemsSource="{Binding ElementName=UC, Path=DocumentsSource}" SelectedItem="{Binding ElementName=UC, Path=DocumentsSelectedItem, Mode=TwoWay}" >
                     <!--<ListView.Resources>
                             <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="#FF00FF" />

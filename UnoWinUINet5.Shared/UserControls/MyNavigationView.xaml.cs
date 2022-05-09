@@ -80,8 +80,13 @@ namespace UnoWinUINet5.UserControls
         private static ObservableCollection<MyNavigationViewItem> GetDefaultDocumentsSource()
         {
             ObservableCollection<MyNavigationViewItem> source = new ObservableCollection<MyNavigationViewItem>();
+
             for (int i = 0; i < 10; i++)
             {
+                if (i == 0)
+                {
+                    source.Add(new MyNavigationViewItem() { Title = "Продажа" });
+                }
                 source.Add(new MyNavigationViewItem() { Title = "Document" + i });
             }
             return source;
@@ -103,31 +108,38 @@ namespace UnoWinUINet5.UserControls
             get { return (MyNavigationViewItem)GetValue(DocumentsSelectedItemProperty); }
             set 
             { 
-                SetValue(DocumentsSelectedItemProperty, value);
+                SetValue(DocumentsSelectedItemProperty, value);              
             }
         }
 
         public MyNavigationView()
         {
             this.InitializeComponent();
-            MainListView.SelectionChanged += MainListView_SelectionChanged;
+            //MainListView.SelectionChanged += MainListView_SelectionChanged;
             DocumentsListView.SelectionChanged += DocumentsListView_SelectionChanged;
         }
 
         private void DocumentsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (DocumentsSelectedItem != null && DocumentsSource.IndexOf(DocumentsSelectedItem) == DocumentsSource.Count - 1)
+            if (DocumentsSelectedItem != null && DocumentsSelectedItem.Title == "Продажа")
             {
-                // DocumentsListView.ScrollIntoView(DocumentsSelectedItem,ScrollIntoViewAlignment.Default);
+                DocumentsSource.Add(new MyNavigationViewItem() { Title = "New Prodajba" + DocumentsSource.Count });
+                DocumentsListView.SelectedItem = DocumentsSource[DocumentsSource.Count - 1];
                 DocumentsListScrollViewer.ScrollToVerticalOffset(double.MaxValue);
             }
+
+            //if (DocumentsSelectedItem != null && DocumentsSource.IndexOf(DocumentsSelectedItem) == DocumentsSource.Count - 1)
+            //{
+            //    // DocumentsListView.ScrollIntoView(DocumentsSelectedItem,ScrollIntoViewAlignment.Default);
+            //    DocumentsListScrollViewer.ScrollToVerticalOffset(double.MaxValue);
+            //}
         }
 
         private void MainListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (MainSelectedItem != null && MainSelectedItem.Title == "Продажа")
             {
-                MainListView.SelectedItem = null;
+                //MainListView.SelectedItem = null;
                 DocumentsSource.Add(new MyNavigationViewItem() { Title = "New Prodajba" + DocumentsSource.Count });
                 DocumentsListView.SelectedItem = DocumentsSource[DocumentsSource.Count - 1];       
             }
@@ -160,17 +172,17 @@ namespace UnoWinUINet5.UserControls
 
         }
 
-        private void DocumentsListScrollViewer_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            MainBorder.Focus(FocusState.Programmatic);
-            Debug.WriteLine("ScrollViewer_PointerExited");
-        }
+        //private void DocumentsListScrollViewer_PointerExited(object sender, PointerRoutedEventArgs e)
+        //{
+        //    MainBorder.Focus(FocusState.Programmatic);
+        //    Debug.WriteLine("ScrollViewer_PointerExited");
+        //}
 
-        private void MainBorder_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            MainBorder.Focus(FocusState.Programmatic);
-            Debug.WriteLine("MainBorder_PointerEntered");
-        }
+        //private void MainBorder_PointerEntered(object sender, PointerRoutedEventArgs e)
+        //{
+        //    MainBorder.Focus(FocusState.Programmatic);
+        //    Debug.WriteLine("MainBorder_PointerEntered");
+        //}
 
         private void HideBorder_PointerEntered(object sender, PointerRoutedEventArgs e)
         {

@@ -37,5 +37,6 @@
 
 	<ItemGroup>
 	  <_Globbed_Compile Remove="DefaultItem.cs" />
+	  <_Globbed_Compile Remove="MainPage2ViewModel.cs" />
 	</ItemGroup>
 </Project>
