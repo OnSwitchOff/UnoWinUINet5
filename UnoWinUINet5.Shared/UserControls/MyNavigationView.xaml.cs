@@ -118,7 +118,8 @@ namespace UnoWinUINet5.UserControls
         {
             if (DocumentsSelectedItem != null && DocumentsSource.IndexOf(DocumentsSelectedItem) == DocumentsSource.Count - 1)
             {
-               // DocumentsListView.ScrollIntoView(DocumentsSelectedItem,ScrollIntoViewAlignment.Default);
+                // DocumentsListView.ScrollIntoView(DocumentsSelectedItem,ScrollIntoViewAlignment.Default);
+                DocumentsListScrollViewer.ScrollToVerticalOffset(double.MaxValue);
             }
         }
 
@@ -149,10 +150,20 @@ namespace UnoWinUINet5.UserControls
             }
         }
 
+
+
         private void DocBorder_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
             DocBorder.Focus(FocusState.Programmatic);
             Debug.WriteLine("DocBorder_PointerEntered");
+
+
+        }
+
+        private void DocumentsListScrollViewer_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            MainBorder.Focus(FocusState.Programmatic);
+            Debug.WriteLine("ScrollViewer_PointerExited");
         }
 
         private void MainBorder_PointerEntered(object sender, PointerRoutedEventArgs e)

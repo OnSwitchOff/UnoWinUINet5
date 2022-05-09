@@ -46,8 +46,8 @@
             </ListView>
         </Border>
 
-        <Border x:Name="DocBorder" Grid.Row="1" PointerEntered="DocBorder_PointerEntered">
-            <ScrollViewer  x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Border x:Name="DocBorder" Grid.Row="1" >
+            <ScrollViewer  x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" PointerEntered="DocBorder_PointerEntered" PointerExited="DocumentsListScrollViewer_PointerExited">
                 <ListView  x:Name="DocumentsListView" ItemsSource="{Binding ElementName=UC, Path=DocumentsSource}" SelectedItem="{Binding ElementName=UC, Path=DocumentsSelectedItem, Mode=TwoWay}" >
                     <!--<ListView.Resources>
                             <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="#FF00FF" />
