@@ -15,9 +15,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.3.0" />
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
+		<PackageReference Include="FluentValidation" Version="11.0.0" />
+		<PackageReference Include="HarabaSourceGenerators.Common" Version="1.0.4" />
+		<PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="8.0.1" />
+		<PackageReference Include="Microinvest.CommonLibrary" Version="1.0.0" />
+		<PackageReference Include="Microinvest.DeviceService" Version="1.0.0" />
+		<PackageReference Include="Microinvest.SearchService" Version="1.0.0" />
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.196" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+		<PackageReference Include="Serilog" Version="2.11.0" />
+		<PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
+		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="4.0.0-dev.7" />
 	</ItemGroup>
 
@@ -36,5 +49,9 @@
 
 	<ItemGroup>
 	  <_Globbed_Compile Remove="DefaultItem.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DataBase\DataBase.csproj" />
 	</ItemGroup>
 </Project>

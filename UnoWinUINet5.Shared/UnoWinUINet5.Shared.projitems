@@ -18,14 +18,84 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AutofacModules\ActivationModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutofacModules\ApplicationServicesModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutofacModules\DatabaseModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutofacModules\LoggingModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutofacModules\MediatorModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutofacModules\PaymentModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutofacModules\ProcessingModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutofacModules\SettingsModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ESettingGroups.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ESettingKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Handlers\ActivationHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Handlers\IActivationHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\FrameExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\MediatorAssemblies.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\SaleProductModelExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\SupportedLanguagesEnumExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\XmlExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Infrastructure\DomainEventsDispatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Infrastructure\IDomainEventsDispatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Infrastructure\IDomainEventsProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GroupModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ItemCodeModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ItemModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\OperationItemModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\VATGroupModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Activation\ActivationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Activation\IActivationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Payment\Device\DeviceSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Payment\Device\IDevice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Payment\Device\NoDevice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Payment\Device\RealDevice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Payment\IPaymentService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Payment\PaymentService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Settings\ISettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Settings\SettingsItemModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Settings\SettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Startup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ThemeSelector\IThemeSelectorService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ThemeSelector\ThemeSelectorService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Translation\DictionaryModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Translation\ITranslationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Translation\TranslationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UserControls\MyCombo2.xaml.cs">
       <DependentUpon>MyCombo2.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)UserControls\MyComboBox.xaml.cs">
       <DependentUpon>MyComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CashRegisterViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DocumentViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ExchangeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ReportsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SaleViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SettingsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CashRegisterView.xaml.cs">
+      <DependentUpon>CashRegisterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\DocumentView.xaml.cs">
+      <DependentUpon>DocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ExchangeView.xaml.cs">
+      <DependentUpon>ExchangeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ReportsView.xaml.cs">
+      <DependentUpon>ReportsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SaleView.xaml.cs">
+      <DependentUpon>SaleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +115,34 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\CashRegisterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\DocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\ExchangeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\ReportsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\SaleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Assets\SharedAssets.md" />
@@ -58,6 +156,7 @@
 		 explicitly included in the projitem, so files can be added from vscode
 		 without manipulating the projitem file.
 	-->
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Dictionary.xml" />
     <_Globbled_Page Include="$(MSBuildThisFileDirectory)**/*.xaml" Exclude="@(Page);@(ApplicationDefinition)">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
