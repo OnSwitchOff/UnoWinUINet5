@@ -38,15 +38,18 @@
             </Border>
         </Grid>
         <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup" >
-            <Border x:Name="PopupBorder" MaxHeight="140"
+            <Border x:Name="PopupBorder">
+                <ScrollViewer  x:Name="PopupScrolViewer" MaxHeight="140"
                                Background="{Binding ElementName=UC2, Path=MainBackground}"
                                BorderThickness="1"
-                               BorderBrush="{Binding ElementName=UC2, Path=MainForeground}">
-                <ListView  x:Name="PopupListView"
-                            SelectedItem ="{Binding ElementName=UC2, Path=SelectedItem}"
-                            ItemsSource="{Binding ElementName=UC2, Path=PopupListViewItemsSource}"
-                            ItemTemplate="{Binding ElementName=UC2, Path=PopupListViewItemTemplate}">
-                </ListView>
+                               BorderBrush="{Binding ElementName=UC2, Path=MainForeground}"
+                               >
+                    <ListView  x:Name="PopupListView"
+                               SelectedItem ="{Binding ElementName=UC2, Path=SelectedItem}"
+                               ItemsSource="{Binding ElementName=UC2, Path=PopupListViewItemsSource}"
+                               ItemTemplate="{Binding ElementName=UC2, Path=PopupListViewItemTemplate}">
+                    </ListView>
+                </ScrollViewer>
             </Border>
         </Popup>
     </Grid>

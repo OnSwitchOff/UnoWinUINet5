@@ -307,7 +307,7 @@ namespace UnoWinUINet5.UserControls
             //PopupScrolViewer.Width = MainGrid.ActualWidth;
             PopupBorder.PointerExited += PopupBorder_PointerExited;
             PopupListView.SelectionChanged += PopupListView_SelectionChanged;
-            PopupBorder.Width = MainGrid.ActualWidth - MainGrid.BorderThickness.Left - PopupBorder.BorderThickness.Left - 1;
+            PopupScrolViewer.Width = MainGrid.ActualWidth - MainGrid.BorderThickness.Left - PopupBorder.BorderThickness.Left - 1;
             StandardPopup.Margin = new Thickness(0, MainGrid.ActualHeight - MainGrid.BorderThickness.Top - PopupBorder.BorderThickness.Top, 0, 0);
         }
 

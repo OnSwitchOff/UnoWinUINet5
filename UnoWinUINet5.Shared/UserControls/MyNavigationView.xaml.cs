@@ -118,7 +118,7 @@ namespace UnoWinUINet5.UserControls
         {
             if (DocumentsSelectedItem != null && DocumentsSource.IndexOf(DocumentsSelectedItem) == DocumentsSource.Count - 1)
             {
-                DocumentsListView.ScrollIntoView(DocumentsSelectedItem,ScrollIntoViewAlignment.Default);
+               // DocumentsListView.ScrollIntoView(DocumentsSelectedItem,ScrollIntoViewAlignment.Default);
             }
         }
 
