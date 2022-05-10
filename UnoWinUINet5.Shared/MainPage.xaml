@@ -5,238 +5,82 @@
     xmlns:local="using:UnoWinUINet5"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:primitives="using:CommunityToolkit.WinUI.UI.Controls.Primitives"
     mc:Ignorable="d"
     xmlns:uc="using:UnoWinUINet5.UserControls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
     <Grid x:Name="Output" VerticalAlignment="Stretch" >
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-       
-        <Border Background="red" Grid.Column="1" Height="50"/>
-        <Border Background="Green" Grid.Column="1" Grid.Row="1" Height="50"/>
-        <Border Background="blue" Grid.Column="0" Height="50"/>
-        <Border Background="brown" Grid.Column="0" Grid.Row="1" Height="50"/>
-        <Border Background="OrangeRed" Grid.Column="2" Grid.Row="1" Height="150"/>
+        <uc:MyNavigationView Grid.Column="0"  Grid.RowSpan="2"/>
 
-        <!--<uc:MyComboBox  Grid.Column="3" Height="36"  PopupListViewItemsSource="{x:Bind fonts}" />-->
-
-        
-        
-        <uc:MyCombo2 VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Height="38" PopupListViewItemsSource="{x:Bind source}" SelectedItem="{x:Bind SelectedItem, Mode=TwoWay}" >
-            <!--<uc:MyCombo2.PopupListViewItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <TextBlock Grid.Column="2" Text="{Binding Path=Text, Mode=TwoWay}" FontFamily="Arial" Foreground="White"  FontWeight="Bold"/>
-                    </Grid>
-                </DataTemplate>
-            </uc:MyCombo2.PopupListViewItemTemplate>-->
-        </uc:MyCombo2>
-
-        <uc:MyCombo2 VerticalAlignment="Center" Grid.Row="0" Grid.Column="3" Height="38" PopupListViewItemsSource="{x:Bind source}" SelectedItem="{x:Bind SelectedItem, Mode=TwoWay}" />
-
-
-        <uc:MyCombo2 VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" IsEditableText="True" MainFontSize="10" MainTextBoxPadding="10,10" IsExistClearBtn="True" Height="38" PopupListViewItemsSource="{x:Bind source}" SelectedItem="{x:Bind SelectedItem, Mode=TwoWay}" >
-            <!--<uc:MyCombo2.PopupListViewItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <TextBlock Grid.Column="2" Text="{Binding Path=Text, Mode=TwoWay}" FontFamily="Arial" Foreground="White"  FontWeight="Bold"/>
-                    </Grid>
-                </DataTemplate>
-            </uc:MyCombo2.PopupListViewItemTemplate>-->
-        </uc:MyCombo2>
-
-
-
-        <Grid Grid.Column="5" Grid.RowSpan="3" x:Name="MainGrid" BorderThickness="1" Margin="0" Padding="0" BorderBrush="Black" Background="DarkSlateBlue">
-           
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="30"/>
-            </Grid.RowDefinitions>
-        
-
-
-
-            <!--<Grid Background="Red">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Border  BorderThickness="1" BorderBrush="Black" Width="30" Height="30" Margin="10">
-                    <Button Content="1"/>
-                </Border>
-                <Border Grid.Row="1" BorderThickness="1" BorderBrush="Black" Width="30" Height="30" Margin="10">
-                    <Button Content="2"/>
-                </Border>
-                <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black" Width="30" Height="30" Margin="10">
-                    <Button Content="3"/>
-                </Border>
-            </Grid>-->
-            <Border x:Name="MainBorder" PointerEntered="MainBorder_PointerEntered">
-                <ListView  x:Name="MainListView" ItemsSource="{x:Bind fonts}"  Background="red">
-                    <!--<ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                            <Setter Property="Padding" Value="12,0" />
-                            <Setter Property="MinWidth" Value="65" />
-                        </Style>
-                    </ListView.ItemContainerStyle>-->
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Border BorderThickness="1" BorderBrush="Black" Width="30" Height="30">
-                                    <Image Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Border>
-                                <Border Grid.Column="1" Visibility="Collapsed">
-                                    <TextBlock Text="MainItem" VerticalAlignment="Center" Padding="10,0"/>
-                                </Border>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Border>
-
-            <Border x:Name="DocBorder" Grid.Row="1" PointerEntered="DocBorder_PointerEntered">
-                <ScrollViewer  x:Name="DocumentsListScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                    <ListView  x:Name="DocumentsListView" ItemsSource="{x:Bind source}">
-                        <!--<ListView.Resources>
-                            <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="#FF00FF" />
-                            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#FFFF00" />
-                            <SolidColorBrush x:Key="SystemControlHighlightAltBaseHighBrush" Color="#00FFFF" />
-                        </ListView.Resources>-->
-                        <!--<ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                                <Setter Property="Padding" Value="12,0" />
-                                <Setter Property="MinWidth" Value="40" />
-                            </Style>
-                        </ListView.ItemContainerStyle>-->
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Border  BorderThickness="1" BorderBrush="Black" Width="30" Height="30">
-                                        <Image Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border  Grid.Column="1" Visibility="Collapsed">
-                                        <TextBlock Text="SecondaryItem" VerticalAlignment="Center" Padding="10,0"/>
-                                    </Border>
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollViewer>
-            </Border>
-            <Border Grid.Row="3" x:Name="HideBorder" Background="Red" Margin="0" Padding="0" >
-                <Path HorizontalAlignment="Right" Fill="#FF718597" x:Name="HidePath"  Data="M 0 0 L 5 5 L 0 10 Z" VerticalAlignment="Center" Margin ="5" >
-                    <Path.RenderTransform>
-                        <RotateTransform Angle="180" CenterX="2" CenterY="5"/>
-                    </Path.RenderTransform>
-                </Path>
-            </Border>
-        </Grid>
-
-
-        <!--<Button  Grid.Column="4" Content="Item0" Click="Item0Clicked" VerticalContentAlignment="Stretch"/>-->
-
-        <TextBox Grid.Column="2" Text="Text" Height="32" />
-
-        <Button Grid.Column="1"  Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked" BorderThickness="2" Background="{StaticResource ApplicationPageBackgroundThemeBrush}" CornerRadius="0" BorderBrush="{StaticResource AppBarBorderThemeBrush}" />
-        <Popup Grid.Column="1"  x:Name="StandardPopup" >
-            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
-                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+        <Frame x:Name="MainFrame" Grid.Column="1" Grid.RowSpan="3" Background="AliceBlue" BorderThickness="1,0" BorderBrush="Black">
+            <controls:DataGrid Grid.Row="2"
+                               x:Name="dg"
+                               ItemsSource="{x:Bind Path=source}"
+                               CanUserSortColumns="True"           
+                               AutoGenerateColumns="False"
+                               FrozenColumnCount="1"
+                               RowBackground="LightSlateGray"
+                               AlternatingRowBackground="LightGray"
+                               GridLinesVisibility="Vertical"
+                               BorderThickness="0"
+                               BorderBrush="Gray"
+                               Background="White">
+                <!--<controls:DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="primitives:DataGridColumnHeader">
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="Padding" Value="10,10"/>
+                    </Style>
+                </controls:DataGrid.ColumnHeaderStyle>
+                <controls:DataGrid.CellStyle>
+                    <Style TargetType="controls:DataGridCell">
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="Padding" Value="10,10"/>
+                    </Style>
+                </controls:DataGrid.CellStyle>-->
+                <controls:DataGrid.Columns>
                     
-                BorderThickness="2" Width="200" Height="200" x:Name="brdr1">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
-                    <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
-                    <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Border>
-        </Popup>
+                    <controls:DataGridTemplateColumn Header="Header"
+                                                     Width="*"
+                                                     MinWidth="100"
+                                                     Tag="Name">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <uc:MyCombo2 VerticalAlignment="Center"  Height="38"/>
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+                    </controls:DataGridTemplateColumn>
 
-        <Grid x:Name="cbbx2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock x:Name="lbl2" VerticalAlignment="Center" Padding="10,0" Foreground="White"/>
-            <Button Grid.Column="1"  Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked2"/>
-            <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup2" >
-                <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
-                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                BorderThickness="2"  x:Name="brdr2">
-                    <ScrollViewer  MaxHeight="200"  Width="{Binding ElementName=cbbx2,Path=ActualWidth,Mode=TwoWay}">
-                        <ListView x:Name="lb" ItemsSource="">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding .}" />
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </ScrollViewer>
-                </Border>
-            </Popup>
-        </Grid>
+                    <controls:DataGridTemplateColumn Header="Header"
+                                                     Width="*"
+                                                     MinWidth="100"
+                                                     Tag="Name">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding }" VerticalAlignment="Center" />
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+                    </controls:DataGridTemplateColumn>
 
-
-        <Grid x:Name="cbbx3" Grid.Row="1" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBox x:Name="lbl3" VerticalAlignment="Center"  Padding="10,0" Foreground="White"/>
-            <Button Grid.Column="1"  Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked3"/>
-        </Grid>
-
-        <Grid x:Name="cbbx4" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock x:Name="lbl4" VerticalAlignment="Center" Padding="10,0" Foreground="White"/>
-            <Button Grid.Column="1"  Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked4"/>
-            <Popup Grid.ColumnSpan="2"   x:Name="StandardPopup4" >
-                <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
-                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                BorderThickness="2"  x:Name="brdr4">
-                    <ScrollViewer  MaxHeight="200" x:Name="scr4">
-                        <ListView x:Name="lb4">
-                            <TextBlock Text="Courier New" FontFamily="Courier New"/>
-                            <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
-                            <TextBlock Text="Arial" FontFamily="Arial"/>
-                            <TextBlock Text="Courier New" FontFamily="Courier New"/>
-                            <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
-                        </ListView>
-                    </ScrollViewer>
-                </Border>
-            </Popup>
-        </Grid>
-
-
-        <uc:MyNavigationView Grid.ColumnSpan="8"  Grid.RowSpan="3"/>
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+        </Frame>
     </Grid>
 </Page>

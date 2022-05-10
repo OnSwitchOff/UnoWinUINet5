@@ -20,11 +20,6 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
         <!--<Border x:Name="MainBorder" PointerEntered="MainBorder_PointerEntered">
             <ListView  x:Name="MainListView" ItemsSource="{Binding ElementName=UC, Path=MainItemsSource}" SelectedItem="{Binding ElementName=UC, Path=MainSelectedItem, Mode=TwoWay}"  Background="red">
                 --><!--<ListView.ItemContainerStyle>
@@ -93,55 +88,7 @@
                     <RotateTransform x:Name="HidePathRotateTransform" Angle="180" CenterX="2" CenterY="5"/>
                 </Path.RenderTransform>
             </Path>
-        </Border>
-
-        <Frame x:Name="MainFrame" Grid.Column="1" Grid.RowSpan="3" Background="AliceBlue" BorderThickness="1,0" BorderBrush="Black">
-            <controls:DataGrid Grid.Row="2"
-                               x:Name="dg"
-                               ItemsSource="{Binding ElementName=UC, Path=DocumentsSource}"
-                               CanUserSortColumns="True"
-           
-                               AutoGenerateColumns="False"
-                               FrozenColumnCount="1"
-                               RowBackground="LightSlateGray"
-                               AlternatingRowBackground="LightGray"
-                               GridLinesVisibility="Vertical"
-                               BorderThickness="0"
-                               BorderBrush="Gray"
-                               Background="White">
-                <controls:DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="primitives:DataGridColumnHeader">
-                        <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                        <Setter Property="FontSize" Value="14" />
-                        <Setter Property="Padding" Value="10,10"/>
-                    </Style>
-                </controls:DataGrid.ColumnHeaderStyle>
-                <controls:DataGrid.CellStyle>
-                    <Style TargetType="controls:DataGridCell">
-                        <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        <Setter Property="FontSize" Value="14" />
-                        <Setter Property="Padding" Value="10,10"/>
-                    </Style>
-                </controls:DataGrid.CellStyle>
-                <controls:DataGrid.Columns>
-                    <controls:DataGridTemplateColumn Header="Header"
-                                                     Width="*"
-                                                     MinWidth="100"
-                                                     Tag="Name">
-                        <controls:DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <local:MyCombo2 VerticalAlignment="Center" Grid.Row="0" Grid.Column="3" Height="38"  />
-                            </DataTemplate>
-                        </controls:DataGridTemplateColumn.CellTemplate>
-                    </controls:DataGridTemplateColumn>                   
-                    
-                </controls:DataGrid.Columns>
-            </controls:DataGrid>
-        </Frame>
+        </Border>       
     </Grid>
 
 </UserControl>

@@ -61,17 +61,7 @@ namespace UnoWinUINet5
 
         }
 
-        private void DocBorder_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            DocBorder.Focus(FocusState.Programmatic);
-            Debug.WriteLine("DocBorder_PointerEntered");
-        }
 
-        private void MainBorder_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            MainBorder.Focus(FocusState.Programmatic);
-            Debug.WriteLine("MainBorder_PointerEntered");
-        }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
@@ -85,39 +75,10 @@ namespace UnoWinUINet5
         //    tb.Focus(FocusState.Programmatic);
         //}
 
-        private void ClosePopupClicked(object sender, RoutedEventArgs e)
-        {
-
-            StandardPopup.LostFocus -= StandardPopup_LostFocus;
-            // if the Popup is open, then close it 
-            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
-        }
+   
 
         // Handles the Click event on the Button on the page and opens the Popup. 
-        private void ShowPopupOffsetClicked(object sender, RoutedEventArgs e)
-        {
-            // open the Popup if it isn't open already 
-            if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
-
-            StandardPopup.LostFocus += StandardPopup_LostFocus;
-
-            StandardPopup.PointerExited += StandardPopup_PointerExited;
-
-            StandardPopup.PointerCaptureLost += StandardPopup_PointerCaptureLost;
-
-            StandardPopup.RightTapped += StandardPopup_RightTapped;
-
-            StandardPopup.LosingFocus += StandardPopup_LosingFocus;
-
-            StandardPopup.PointerEntered += StandardPopup_PointerEntered;
-
-            StandardPopup.PointerMoved += StandardPopup_PointerMoved;
-
-            StandardPopup.Tapped += StandardPopup_Tapped;
-
-            brdr1.PointerExited += Brdr1_PointerExited;
-           
-        }
+      
 
         private void Item0Clicked(object sender, RoutedEventArgs e)
         {
@@ -125,102 +86,11 @@ namespace UnoWinUINet5
 
         }
 
-        private void Brdr1_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            brdr1.PointerExited -= Brdr1_PointerExited;
-            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
-        }
+       
+       
 
-        private void StandardPopup_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void StandardPopup_PointerMoved(object sender, PointerRoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void StandardPopup_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void StandardPopup_LosingFocus(UIElement sender, LosingFocusEventArgs args)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void StandardPopup_RightTapped(object sender, RightTappedRoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void StandardPopup_PointerCaptureLost(object sender, PointerRoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void StandardPopup_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            StandardPopup.PointerExited -= StandardPopup_PointerExited;
-            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
-        }
-
-        private void StandardPopup_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-            StandardPopup.LostFocus -= StandardPopup_LostFocus;
-            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
-        }
-
-        private void ClosePopupClicked2(object sender, RoutedEventArgs e)
-        {
-
-            StandardPopup2.LostFocus -= StandardPopup_LostFocus2;
-            // if the Popup is open, then close it 
-            if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
-        }
-
-        // Handles the Click event on the Button on the page and opens the Popup. 
-        private void ShowPopupOffsetClicked2(object sender, RoutedEventArgs e)
-        {
-            // open the Popup if it isn't open already 
-            if (!StandardPopup2.IsOpen) { StandardPopup2.IsOpen = true; }
-            StandardPopup2.LostFocus += StandardPopup_LostFocus2;
-            brdr2.PointerExited += Brdr2_PointerExited;
-            lb.SelectionChanged += Lb_SelectionChanged;
-
-        }
-
-        private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            lbl2.Text = (lb.SelectedValue as TextBlock).Text;
-            lb.SelectionChanged -= Lb_SelectionChanged;
-            brdr2.PointerExited -= Brdr2_PointerExited;
-            if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
-        }
-
-        private void Brdr2_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            lb.SelectionChanged -= Lb_SelectionChanged;
-            brdr2.PointerExited -= Brdr2_PointerExited;
-            if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
-        }
-
-        private void Brdr1_RightTapped(object sender, RightTappedRoutedEventArgs e)
-        {
-            brdr2.RightTapped -= Brdr1_RightTapped;
-            if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
-        }
-
-        private void StandardPopup_LostFocus2(object sender, RoutedEventArgs e)
-        {
-
-            StandardPopup2.LostFocus -= StandardPopup_LostFocus2;
-            if (StandardPopup2.IsOpen) { StandardPopup2.IsOpen = false; }
-        }
-
+       
+        
 
         Popup popup;
         ListView listView;
@@ -233,91 +103,9 @@ namespace UnoWinUINet5
         }
 
 
-        private void ShowPopupOffsetClicked3(object sender, RoutedEventArgs e)
-        {
-            // open the Popup if it isn't open already 
+        
+           
 
-            popup = new Popup();
-
-
-            Border bg = new Border();
-            bg.BorderThickness = new Thickness(2);
-            bg.BorderBrush = new SolidColorBrush(Colors.Blue);
-            bg.Background = new SolidColorBrush(Colors.White);
-
-
-            ScrollViewer scrollViewer = new ScrollViewer();
-            scrollViewer.MaxHeight = 200;
-            scrollViewer.Width = cbbx3.ActualWidth;
-
-            listView = new ListView();
-            //StringReader stringReader = new StringReader("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Text=\"Text\"/></DataTemplate>");
-            //XmlReader xmlReader = XmlReader.Create(stringReader);
-
-            //DataTemplate dataTemplate = XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Text=\"Text\"/></DataTemplate>") as DataTemplate;
-
-            //listView.ItemTemplate = dataTemplate;
-
-            string[] source = new string[] { "item1", "item2", "item3", "item2", "item3", "item2", "item3" };
-            listView.ItemsSource = source;
-
-
-            StandardPopup2.LostFocus += StandardPopup_LostFocus2;
-            brdr2.PointerExited += Brdr2_PointerExited;
-            lb.SelectionChanged += Lb_SelectionChanged;
-
-            scrollViewer.Content = listView;
-            cbbx3.Children.Add(popup);
-            Grid.SetColumnSpan(popup, 2);
-            bg.Child = scrollViewer;
-            popup.Child = bg;
        
-
-            scrollViewer.PointerExited += ScrollViewer_PointerExited;
-            listView.SelectionChanged += ListView_SelectionChanged;
-            popup.IsOpen = true;
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            popup.IsOpen = false;
-            listView.SelectionChanged -= ListView_SelectionChanged;
-
-            lbl3.Text = listView.SelectedValue.ToString();
-            cbbx3.Children.Remove(popup);
-        }
-
-        private void ScrollViewer_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            popup.IsOpen = false;
-            listView.SelectionChanged -= ListView_SelectionChanged;
-            cbbx3.Children.Remove(popup);
-        }
-
-
-        private void ShowPopupOffsetClicked4(object sender, RoutedEventArgs e)
-        {
-            // open the Popup if it isn't open already 
-            if (!StandardPopup4.IsOpen) { StandardPopup4.IsOpen = true; }
-            scr4.Width = cbbx4.ActualWidth;
-            brdr4.PointerExited += Brdr4_PointerExited; 
-            lb4.SelectionChanged += Lb_SelectionChanged4; 
-
-        }
-
-        private void Lb_SelectionChanged4(object sender, SelectionChangedEventArgs e)
-        {
-            lbl4.Text = (lb4.SelectedValue as TextBlock).Text;
-            lb4.SelectionChanged -= Lb_SelectionChanged4;
-            brdr4.PointerExited -= Brdr4_PointerExited;
-            if (StandardPopup4.IsOpen) { StandardPopup4.IsOpen = false; }
-        }
-
-        private void Brdr4_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            lb4.SelectionChanged -= Lb_SelectionChanged4;
-            brdr4.PointerExited -= Brdr4_PointerExited;
-            if (StandardPopup4.IsOpen) { StandardPopup4.IsOpen = false; }
-        }
     }
 }
