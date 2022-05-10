@@ -34,7 +34,6 @@
                                RowBackground="LightSlateGray"
                                AlternatingRowBackground="LightGray"
                                GridLinesVisibility="Vertical"
-                               CanUserResizeColumns="True"
                                BorderThickness="0"
                                BorderBrush="Gray"
                                Background="White">
@@ -57,28 +56,10 @@
                     </Style>
                 </controls:DataGrid.CellStyle>-->
                 <controls:DataGrid.Columns>
-                    
-                    <controls:DataGridTemplateColumn Header="Header"
-                                                     Width="*"
-                                                     MinWidth="100"
-                                                     Tag="Name">
-                        <controls:DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <uc:MyCombo2 VerticalAlignment="Center"  Height="38"/>
-                            </DataTemplate>
-                        </controls:DataGridTemplateColumn.CellTemplate>
-                    </controls:DataGridTemplateColumn>
 
-                    <controls:DataGridTemplateColumn Header="Header"
-                                                     Width="*"
-                                                     MinWidth="100"
-                                                     Tag="Name">
-                        <controls:DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding }" VerticalAlignment="Center" />
-                            </DataTemplate>
-                        </controls:DataGridTemplateColumn.CellTemplate>
-                    </controls:DataGridTemplateColumn>
+                    <controls:DataGridTextColumn Header="header" Binding="{Binding Path=Text}" Width="*"/>
+                    <controls:DataGridTextColumn Header="header" Binding="{Binding Path=Text}" Width="*"/>
+
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
